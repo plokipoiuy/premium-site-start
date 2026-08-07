@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>전광판 — 웹사이트 진단·기획·견적 보드</title>
+<meta name="description" content="문제 진단, 비교분석, 기획, 사이트 정보, 페이지 상세를 입력하면 실시간 미리보기와 PDF로 정리해주는 웹사이트 리뉴얼 보드" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">전광판</span>
+    </div>
+    <p class="brand-sub">웹사이트 리뉴얼 보드</p>
+
+    <nav class="nav" id="nav">
+      <button class="nav-item active" data-section="diagnosis">
+        <span class="nav-num">01</span>
+        <span>문제점 진단</span>
+      </button>
+      <button class="nav-item" data-section="compare">
+        <span class="nav-num">02</span>
+        <span>비교 분석</span>
+      </button>
+      <button class="nav-item" data-section="planning">
+        <span class="nav-num">03</span>
+        <span>기획</span>
+      </button>
+      <button class="nav-item" data-section="siteinfo">
+        <span class="nav-num">04</span>
+        <span>홈페이지 정보</span>
+      </button>
+      <button class="nav-item" data-section="pages">
+        <span class="nav-num">05</span>
+        <span>페이지 상세</span>
+      </button>
+      <button class="nav-item" data-section="quote">
+        <span class="nav-num">06</span>
+        <span>견적서</span>
+      </button>
+      <button class="nav-item" data-section="draft1">
+        <span class="nav-num">07</span>
+        <span>시안1 미리보기</span>
+      </button>
+      <button class="nav-item" data-section="draft2">
+        <span class="nav-num">08</span>
+        <span>시안2 미리보기</span>
+      </button>
+      <button class="nav-item" data-section="handover">
+        <span class="nav-num">09</span>
+        <span>인수인계 정보</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <p>입력 내용은 이 브라우저에만 저장됩니다.<br/>서버로 전송되지 않습니다.</p>
+      <button class="btn-ghost" id="resetAllBtn" type="button">전체 초기화</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- 01 진단 -->
+    <section class="panel active" id="section-diagnosis" data-section="diagnosis">
+      <header class="panel-head">
+        <h1>01 · 문제점 진단</h1>
+        <p>현재 사이트의 문제점을 정리해서 입력하세요. Claude Code 등에서 분석한 내용을 붙여넣어도 됩니다.</p>
+      </header>
+
+      <div class="split">
+        <div class="form-col">
+          <label class="field">
+            <span class="field-label">진단 내용</span>
+            <textarea data-model="diagnosis.content" rows="16" placeholder="예) 히어로 섹션에 CTA가 2개 있어 전환 지점이 분산됨. 본문 폰트가 시스템 폰트라 신뢰도가 낮아 보임. 모바일에서 히어로 텍스트가 잘림..."></textarea>
+          </label>
+          <button class="btn-primary pdf-btn" data-pdf="diagnosis" data-title="웹사이트 문제점 진단 리포트" type="button">PDF로 받기</button>
+        </div>
+
+        <div class="preview-col">
+          <div class="preview-label">미리보기</div>
+          <div class="preview-panel">
+            <div class="preview-content" data-preview="diagnosis"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 비교분석 -->
+    <section class="panel" id="section-compare" data-section="compare">
+      <header class="panel-head">
+        <h1>02 · 비교 분석</h1>
+        <p>참고할 사이트와 수정할 홈페이지 주소를 입력하고, 항목별로 비교 메모를 남기세요.</p>
+      </header>
+
+      <div class="split">
+        <div class="form-col">
+          <div class="field-row">
+            <label class="field">
+              <span class="field-label">참고 사이트 URL</span>
+              <input type="text" data-model="compare.refUrl" placeholder="https://reference-site.com" />
+            </label>
+            <label class="field">
+              <span class="field-label">본 사이트 URL</span>
+              <input type="text" data-model="compare.targetUrl" placeholder="https://my-current-site.com" />
+            </label>
+          </div>
+
+          <div class="compare-rows" id="compareRows"></div>
+
+          <label class="field">
+            <span class="field-label">종합 의견</span>
+            <textarea data-model="compare.summary" rows="4" placeholder="전체적으로 참고 사이트 대비 부족한 점과 개선 방향을 요약..."></textarea>
+          </label>
+
+          <button class="btn-primary pdf-btn" data-pdf="compare" data-title="비교 분석 리포트" type="button">PDF로 받기</button>
+        </div>
+
+        <div class="preview-col">
+          <div class="preview-label">미리보기</div>
+          <div class="preview-panel">
+            <div class="preview-content" data-preview="compare"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 기획 -->
+    <section class="panel" id="section-planning" data-section="planning">
+      <header class="panel-head">
+        <h1>03 · 기획</h1>
+        <p>프로젝트의 방향을 정리하세요.</p>
+      </header>
+
+      <div class="split">
+        <div class="form-col">
+          <label class="field">
+            <span class="field-label">프로젝트 목표</span>
+            <textarea data-model="planning.goal" rows="3" placeholder="예) 리드 문의 전환율 개선, 브랜드 신뢰도 향상..."></textarea>
+          </label>
+          <label class="field">
+            <span class="field-label">타겟 고객</span>
+            <textarea data-model="planning.audience" rows="3" placeholder="예) 30~40대 B2B 의사결정권자..."></textarea>
+          </label>
+          <label class="field">
+            <span class="field-label">톤앤매너</span>
+            <textarea data-model="planning.tone" rows="3" placeholder="예) 미니멀, 다크 모드, 절제된 모션..."></textarea>
+          </label>
+          <label class="field">
+            <span class="field-label">핵심 요구사항</span>
+            <textarea data-model="planning.requirements" rows="4" placeholder="예) 예약 시스템 연동, 다국어 지원, 블로그 CMS..."></textarea>
+          </label>
+          <button class="btn-primary pdf-btn" data-pdf="planning" data-title="기획 요약 리포트" type="button">PDF로 받기</button>
+        </div>
+
+        <div class="preview-col">
+          <div class="preview-label">미리보기</div>
+          <div class="preview-panel">
+            <div class="preview-content" data-preview="planning"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 홈페이지 정보 -->
+    <section class="panel" id="section-siteinfo" data-section="siteinfo">
+      <header class="panel-head">
+        <h1>04 · 홈페이지 정보</h1>
+        <p>사이트 기본 정보와 참고 이미지를 등록하세요. 견적서 상단에도 사용됩니다.</p>
+      </header>
+
+      <div class="split">
+        <div class="form-col">
+          <div class="field-row">
+            <label class="field">
+              <span class="field-label">사이트명</span>
+              <input type="text" data-model="siteInfo.name" placeholder="예) 스튜디오 오르반" />
+            </label>
+            <label class="field">
+              <span class="field-label">브랜드 컬러</span>
+              <input type="color" data-model="siteInfo.brandColor" class="color-input" />
+            </label>
+          </div>
+          <label class="field">
+            <span class="field-label">한줄 소개 / 슬로건</span>
+            <input type="text" data-model="siteInfo.tagline" placeholder="예) 공간을 짓는 건축 스튜디오" />
+          </label>
+
+          <label class="field">
+            <span class="field-label">참고 사진 업로드</span>
+            <input type="file" id="photoInput" accept="image/*" multiple />
+          </label>
+          <div class="photo-grid" id="photoGrid"></div>
+        </div>
+
+        <div class="preview-col">
+          <div class="preview-label">미리보기</div>
+          <div class="preview-panel">
+            <div class="preview-content" data-preview="siteinfo"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 페이지 상세 -->
+    <section class="panel" id="section-pages" data-section="pages">
+      <header class="panel-head">
+        <h1>05 · 페이지 상세</h1>
+        <p>제작할 페이지를 하나씩 추가하고 상세 정보를 입력하세요. 복잡도는 06 견적서 계산에 사용됩니다.</p>
+      </header>
+
+      <div class="split">
+        <div class="form-col">
+          <div class="page-list" id="pageList"></div>
+          <button class="btn-secondary" id="addPageBtn" type="button">+ 페이지 추가</button>
+        </div>
+
+        <div class="preview-col">
+          <div class="preview-label">미리보기</div>
+          <div class="preview-panel">
+            <div class="preview-content" data-preview="pages"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 견적서 -->
+    <section class="panel" id="section-quote" data-section="quote">
+      <header class="panel-head">
+        <h1>06 · 견적서</h1>
+        <p>05에서 입력한 페이지 목록을 기준으로 자동 계산됩니다. 단가는 직접 조정하세요.</p>
+      </header>
+
+      <div class="split">
+        <div class="form-col">
+          <div class="field-row">
+            <label class="field">
+              <span class="field-label">기본 기획/디자인비 (원)</span>
+              <input type="number" min="0" step="10000" data-model="quote.baseFee" />
+            </label>
+          </div>
+          <div class="field-row three">
+            <label class="field">
+              <span class="field-label">간단 페이지 단가</span>
+              <input type="number" min="0" step="10000" data-model="quote.unitPrices.simple" />
+            </label>
+            <label class="field">
+              <span class="field-label">보통 페이지 단가</span>
+              <input type="number" min="0" step="10000" data-model="quote.unitPrices.medium" />
+            </label>
+            <label class="field">
+              <span class="field-label">복잡 페이지 단가</span>
+              <input type="number" min="0" step="10000" data-model="quote.unitPrices.complex" />
+            </label>
+          </div>
+          <label class="check-field">
+            <input type="checkbox" data-model="quote.vatIncluded" />
+            <span>부가세(10%) 포함해서 표시</span>
+          </label>
+
+          <button class="btn-primary pdf-btn" data-pdf="quote" data-title="견적서" type="button">견적서 PDF로 받기</button>
+        </div>
+
+        <div class="preview-col">
+          <div class="preview-label">미리보기</div>
+          <div class="preview-panel">
+            <div class="preview-content" data-preview="quote"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 시안1 미리보기 -->
+    <section class="panel" id="section-draft1" data-section="draft1">
+      <header class="panel-head">
+        <h1>07 · 시안1 미리보기</h1>
+        <p>시안 URL을 입력하면 바로 임베드해서 보여줍니다. iframe 삽입이 막힌 사이트라면 스크린샷을 업로드하세요.</p>
+      </header>
+
+      <div class="split">
+        <div class="form-col">
+          <label class="field">
+            <span class="field-label">시안1 URL</span>
+            <input type="text" data-model="draft1.url" placeholder="https://draft1.example.com" />
+          </label>
+          <label class="field">
+            <span class="field-label">스크린샷 업로드 (선택)</span>
+            <input type="file" id="draft1Image" accept="image/*" />
+          </label>
+          <div id="draft1ImagePreview"></div>
+          <label class="field">
+            <span class="field-label">메모</span>
+            <textarea data-model="draft1.notes" rows="4" placeholder="이 시안에 대한 설명, 피드백 포인트 등"></textarea>
+          </label>
+          <button class="btn-primary pdf-btn" data-pdf="draft1" data-title="시안1 미리보기" type="button">PDF로 받기</button>
+          <p class="hint">PDF에는 업로드한 이미지·URL·메모가 포함됩니다 (iframe은 제외).</p>
+        </div>
+
+        <div class="preview-col">
+          <div class="preview-label">미리보기</div>
+          <div class="preview-panel">
+            <div class="preview-content" data-preview="draft1"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 시안2 미리보기 -->
+    <section class="panel" id="section-draft2" data-section="draft2">
+      <header class="panel-head">
+        <h1>08 · 시안2 미리보기</h1>
+        <p>시안 URL을 입력하면 바로 임베드해서 보여줍니다. iframe 삽입이 막힌 사이트라면 스크린샷을 업로드하세요.</p>
+      </header>
+
+      <div class="split">
+        <div class="form-col">
+          <label class="field">
+            <span class="field-label">시안2 URL</span>
+            <input type="text" data-model="draft2.url" placeholder="https://draft2.example.com" />
+          </label>
+          <label class="field">
+            <span class="field-label">스크린샷 업로드 (선택)</span>
+            <input type="file" id="draft2Image" accept="image/*" />
+          </label>
+          <div id="draft2ImagePreview"></div>
+          <label class="field">
+            <span class="field-label">메모</span>
+            <textarea data-model="draft2.notes" rows="4" placeholder="이 시안에 대한 설명, 피드백 포인트 등"></textarea>
+          </label>
+          <button class="btn-primary pdf-btn" data-pdf="draft2" data-title="시안2 미리보기" type="button">PDF로 받기</button>
+          <p class="hint">PDF에는 업로드한 이미지·URL·메모가 포함됩니다 (iframe은 제외).</p>
+        </div>
+
+        <div class="preview-col">
+          <div class="preview-label">미리보기</div>
+          <div class="preview-panel">
+            <div class="preview-content" data-preview="draft2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 인수인계 정보 -->
+    <section class="panel" id="section-handover" data-section="handover">
+      <header class="panel-head">
+        <h1>09 · 인수인계 정보</h1>
+        <p>도메인·호스팅·관리자 계정 등 홈페이지를 고객에게 넘길 때 필요한 정보를 정리하세요. 이 브라우저에만 저장되며 서버로 전송되지 않습니다.</p>
+      </header>
+
+      <div class="split">
+        <div class="form-col">
+          <div class="field-row">
+            <label class="field">
+              <span class="field-label">도메인</span>
+              <input type="text" data-model="handover.domain" placeholder="example.com" />
+            </label>
+            <label class="field">
+              <span class="field-label">호스팅 업체 / 플랜</span>
+              <input type="text" data-model="handover.hosting" placeholder="예) Vercel Pro" />
+            </label>
+          </div>
+          <label class="field">
+            <span class="field-label">관리자 로그인 URL</span>
+            <input type="text" data-model="handover.adminUrl" placeholder="https://example.com/admin" />
+          </label>
+          <div class="field-row">
+            <label class="field">
+              <span class="field-label">관리자 아이디</span>
+              <input type="text" data-model="handover.adminId" placeholder="admin" />
+            </label>
+            <label class="field">
+              <span class="field-label">관리자 비밀번호</span>
+              <div class="pass-row">
+                <input type="password" id="adminPasswordInput" data-model="handover.adminPassword" placeholder="••••••••" />
+                <button type="button" class="btn-ghost pass-toggle" id="togglePasswordBtn">표시</button>
+              </div>
+            </label>
+          </div>
+          <label class="field">
+            <span class="field-label">기타 계정 정보 (DNS, FTP, 이메일 등)</span>
+            <textarea data-model="handover.otherAccounts" rows="3" placeholder="예) DNS: Cloudflare / FTP 계정: ..."></textarea>
+          </label>
+          <label class="field">
+            <span class="field-label">사용 방법 / 안내</span>
+            <textarea data-model="handover.usage" rows="4" placeholder="예) 콘텐츠 수정 방법, 문의 폼 확인 방법 등"></textarea>
+          </label>
+          <button class="btn-primary pdf-btn" data-pdf="handover" data-title="인수인계 정보" type="button">PDF로 받기</button>
+          <p class="hint">비밀번호는 PDF에 실제 값으로 포함됩니다. 전달 후 파일 보관에 주의하세요.</p>
+        </div>
+
+        <div class="preview-col">
+          <div class="preview-label">미리보기</div>
+          <div class="preview-panel">
+            <div class="preview-content" data-preview="handover"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Hidden print root, used only for PDF export via window.print() -->
+<div id="print-root"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
