@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>고객 여정 로드맵 — AI 홈페이지 제작</title>
+<meta name="description" content="고객을 만나기 전 준비 과정과, 고객이 선정된 이후 진행 과정을 순서대로 정리한 로드맵" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --surface: #13131A;
+    --border: #24242F;
+    --text: #F5F5F0;
+    --text-muted: #9C9CA8;
+    --accent: #00E5D8;
+    --accent-dim: rgba(0, 229, 216, 0.14);
+    --font-head: "Sora", "Inter", sans-serif;
+    --font-body: "Inter", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 72px 24px 120px; }
+
+  .page-head { margin-bottom: 64px; }
+  .page-head .eyebrow {
+    color: var(--accent); font-size: 12.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; margin: 0 0 12px;
+  }
+  .page-head h1 {
+    font-family: var(--font-head); font-size: 40px; letter-spacing: -0.01em;
+    margin: 0 0 14px; line-height: 1.2;
+  }
+  .page-head p { color: var(--text-muted); font-size: 15.5px; line-height: 1.6; max-width: 640px; margin: 0; }
+
+  .phase-head { margin: 72px 0 32px; }
+  .phase-head:first-of-type { margin-top: 0; }
+  .phase-head .phase-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent); font-size: 12.5px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .phase-head .phase-label::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 10px var(--accent);
+  }
+  .phase-head h2 { font-family: var(--font-head); font-size: 26px; margin: 0 0 8px; }
+  .phase-head p { color: var(--text-muted); font-size: 14.5px; margin: 0; line-height: 1.55; }
+
+  .timeline { position: relative; padding-left: 44px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 15px; top: 6px; bottom: 6px;
+    width: 1px; background: var(--border);
+  }
+
+  .step { position: relative; padding-bottom: 28px; }
+  .step:last-child { padding-bottom: 0; }
+  .step-num {
+    position: absolute; left: -44px; top: 0; width: 32px; height: 32px;
+    border-radius: 50%; background: var(--surface); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head); font-size: 12.5px; color: var(--accent);
+  }
+  .step-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .step-card h3 { font-size: 15.5px; margin: 0 0 6px; font-weight: 600; }
+  .step-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+  .step-card .ref {
+    display: inline-block; margin-top: 10px; font-size: 11.5px;
+    color: var(--accent); background: var(--accent-dim);
+    padding: 3px 9px; border-radius: 100px;
+  }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 72px 0 0; }
+
+  .footnote {
+    margin-top: 56px; padding: 18px 20px; border: 1px dashed var(--border);
+    border-radius: 12px; color: var(--text-muted); font-size: 13px; line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 48px 18px 80px; }
+    .page-head h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="eyebrow">Client Journey Roadmap</p>
+    <h1>고객을 만나고, 홈페이지를 완성하기까지</h1>
+    <p>고객을 만나기 전 준비 과정과, 고객이 선정된 이후 진행 과정을 순서대로 정리했습니다. 이 페이지는 노션에 옮겨 담을 초안입니다.</p>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase-head">
+    <div class="phase-label">Phase 1</div>
+    <h2>고객을 만나기 전 — 준비와 영업</h2>
+    <p>첫 문의가 들어오기 전까지, 나의 실력과 신뢰를 미리 만들어두는 단계입니다.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-card">
+        <h3>SNS 계정 셋업</h3>
+        <p>프로필 사진을 등록하고 소개글을 작성합니다. 완벽하지 않아도 되니 일단 만들어두고 차차 수정합니다.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-card">
+        <h3>실력 증명용 샘플 홈페이지 제작</h3>
+        <p>아임웹·식스샵 + AI 블록을 활용해 포트폴리오로 보여줄 샘플 홈페이지를 1개 완성합니다.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-card">
+        <h3>레퍼런스 수집·분석</h3>
+        <p>GDWEB, Awwwards, 아임웹·식스샵 제작사례를 돌아보며 좋은 구조와 스타일을 눈에 익힙니다.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-card">
+        <h3>서비스 소개 자료 준비</h3>
+        <p>파스비코나(Problem→Action) 구조로 서비스 제안서 또는 소개문을 작성해둡니다.</p>
+        <span class="ref">파스비코나 구조 참고</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-card">
+        <h3>타겟 고객 정의 및 첫 접근 설계</h3>
+        <p>어떤 업종·규모를 타겟할지 정하고, 먼저 도움 되는 자료를 보내며 접근하는 방식을 설계합니다.</p>
+        <span class="ref">첫 고객 만나는 법 참고</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-card">
+        <h3>영업 멘트·응대 스크립트 준비</h3>
+        <p>상황별 DM/이메일 템플릿과 문의 응대 멘트집을 미리 정리해둡니다.</p>
+        <span class="ref">고객 응대 멘트집 참고</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-card">
+        <h3>첫 문의 접수 → 상담</h3>
+        <p>문의가 들어오면 빠르게 응대하고, 니즈를 파악해 다음 단계(계약)로 연결합니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- PHASE 2 -->
+  <div class="phase-head">
+    <div class="phase-label">Phase 2</div>
+    <h2>고객이 선정된 이후 — 제작 진행 과정</h2>
+    <p>계약부터 인수인계까지, 순서대로 빼먹지 않고 진행하기 위한 체크리스트입니다.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-card">
+        <h3>계약 체결</h3>
+        <p>업무 범위, 일정, 비용을 명시한 계약서를 작성하고 서명받습니다.</p>
+        <span class="ref">쉽고 안전한 계약 참고</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-card">
+        <h3>고객 정보 수집 (설문)</h3>
+        <p>기본 정보, 목표, 타겟 고객, 콘텐츠/기능, 브랜딩 톤을 설문으로 확보합니다.</p>
+        <span class="ref">전광판 04 · 홈페이지 정보</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-card">
+        <h3>현재 사이트 문제점 진단</h3>
+        <p>기존 홈페이지가 있다면 무엇이 문제인지 정리합니다.</p>
+        <span class="ref">전광판 01 · 문제점 진단</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-card">
+        <h3>레퍼런스 비교 분석</h3>
+        <p>참고 사이트와 본 사이트를 히어로·타이포·컬러·모션·CTA 항목별로 비교합니다.</p>
+        <span class="ref">전광판 02 · 비교 분석</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-card">
+        <h3>기획 확정 (사이트맵·콘텐츠)</h3>
+        <p>목표·타겟·톤앤매너·요구사항을 정리하고, AI 프롬프트로 사이트맵과 섹션별 콘텐츠를 기획합니다.</p>
+        <span class="ref">전광판 03 · 기획</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-card">
+        <h3>견적서 작성 및 전달</h3>
+        <p>페이지별 복잡도 기준으로 견적을 계산해 고객에게 전달하고 컨펌받습니다.</p>
+        <span class="ref">전광판 06 · 견적서</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-card">
+        <h3>페이지별 상세 설계</h3>
+        <p>제작할 페이지 목록, 구성 요소, 필요한 기능을 페이지 단위로 정의합니다.</p>
+        <span class="ref">전광판 05 · 페이지 상세</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">8</div>
+      <div class="step-card">
+        <h3>시안 제작 (최소 2개)</h3>
+        <p>디자인 초안을 2개 이상 만들어 URL 또는 스크린샷으로 고객에게 보여줍니다.</p>
+        <span class="ref">전광판 07·08 · 시안 미리보기</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">9</div>
+      <div class="step-card">
+        <h3>고객 피드백 반영</h3>
+        <p>시안 중 하나를 선택받고, 수정 요청 사항을 정리해 반영합니다.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">10</div>
+      <div class="step-card">
+        <h3>상세 제작</h3>
+        <p>실제 페이지를 빌드하고, 필요한 애니메이션·기능(문의폼, 결제, 예약 등)을 구현합니다.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">11</div>
+      <div class="step-card">
+        <h3>최종 점검</h3>
+        <p>기능 테스트, 디바이스·브라우저 호환성, SEO와 로딩 속도를 점검합니다.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">12</div>
+      <div class="step-card">
+        <h3>배포</h3>
+        <p>도메인을 연결하고 호스팅(Vercel 등)에 게시해 실제 주소로 열리게 합니다.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">13</div>
+      <div class="step-card">
+        <h3>인수인계</h3>
+        <p>도메인, 호스팅, 관리자 계정, 사용 방법을 정리해 고객에게 전달합니다.</p>
+        <span class="ref">전광판 09 · 인수인계 정보</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">14</div>
+      <div class="step-card">
+        <h3>사후 관리 안내</h3>
+        <p>유지보수 범위와 추가 요청이 있을 때 대응 방식을 미리 고지합니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    "전광판" 표시가 붙은 단계는 이미 만들어둔 웹 도구(진단·비교분석·기획·정보·페이지상세·견적서·시안·인수인계)의 해당 섹션에서 바로 입력·정리할 수 있습니다. 이 로드맵은 노션에 옮겨서 고객별로 복제해 쓰는 체크리스트 형태로 다듬을 예정입니다.
+  </div>
+
+</div>
+
+</body>
+</html>
