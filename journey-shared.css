@@ -1,0 +1,175 @@
+:root {
+  --bg: #0A0A0F;
+  --surface: #13131A;
+  --surface-2: #1B1B24;
+  --border: #24242F;
+  --text: #F5F5F0;
+  --text-muted: #9C9CA8;
+  --accent: #00E5D8;
+  --accent-dim: rgba(0, 229, 216, 0.14);
+  --doing: #FFB020;
+  --doing-dim: rgba(255, 176, 32, 0.14);
+  --font-head: "Sora", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg); color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); }
+.wrap { max-width: 880px; margin: 0 auto; padding: 56px 24px 120px; }
+
+/* ---------- top bar ---------- */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 880px; margin: 0 auto; padding: 20px 24px 0;
+}
+.topbar .back-link {
+  color: var(--text-muted); text-decoration: none; font-size: 13.5px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topbar .back-link:hover { color: var(--text); }
+.topbar .brand { display: flex; align-items: center; gap: 8px; }
+.topbar .brand-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 10px var(--accent);
+}
+.topbar .brand-name { font-family: var(--font-head); font-weight: 700; font-size: 15px; }
+
+/* ---------- page head ---------- */
+.page-head { margin-bottom: 40px; }
+.page-head .eyebrow {
+  color: var(--accent); font-size: 12.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; margin: 0 0 12px;
+}
+.page-head h1 {
+  font-family: var(--font-head); font-size: 34px; letter-spacing: -0.01em;
+  margin: 0 0 14px; line-height: 1.2;
+}
+.page-head p { color: var(--text-muted); font-size: 15px; line-height: 1.6; max-width: 640px; margin: 0 0 20px; }
+
+/* ---------- progress bar ---------- */
+.progress-row { display: flex; align-items: center; gap: 12px; max-width: 420px; }
+.progress-track {
+  flex: 1; height: 8px; border-radius: 100px; background: var(--surface-2);
+  border: 1px solid var(--border); overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--doing), var(--accent));
+  border-radius: 100px; transition: width 0.4s ease; width: 0%;
+}
+.progress-label { font-size: 12.5px; color: var(--text-muted); white-space: nowrap; }
+
+/* ---------- accordion steps ---------- */
+.steps { display: flex; flex-direction: column; gap: 10px; }
+
+.step {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  overflow: hidden; transition: border-color 0.2s ease;
+}
+.step[data-state="doing"] { border-color: rgba(255, 176, 32, 0.4); }
+.step[data-state="done"] { border-color: rgba(0, 229, 216, 0.35); }
+
+.step-head {
+  width: 100%; display: flex; align-items: center; gap: 14px;
+  background: transparent; border: none; text-align: left; cursor: pointer;
+  padding: 16px 18px; color: var(--text); font-family: inherit;
+}
+.step-num {
+  font-family: var(--font-head); font-size: 12px; color: var(--text-muted);
+  min-width: 28px;
+}
+.step-title { flex: 1; font-size: 15px; font-weight: 600; }
+.step-chevron {
+  color: var(--text-muted); font-size: 13px; transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.step.open .step-chevron { transform: rotate(180deg); }
+
+.step-status {
+  width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+  border: 2px solid var(--border); background: transparent; cursor: pointer;
+  position: relative; padding: 0;
+}
+.step-status:hover { border-color: var(--text-muted); }
+.step-status[data-state="doing"] { border-color: var(--doing); background: var(--doing-dim); }
+.step-status[data-state="doing"]::after {
+  content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--doing);
+}
+.step-status[data-state="done"] { border-color: var(--accent); background: var(--accent); }
+.step-status[data-state="done"]::after {
+  content: "\2713"; position: absolute; inset: 0; display: flex;
+  align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #04211F;
+}
+
+.step-body {
+  display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease;
+}
+.step.open .step-body { grid-template-rows: 1fr; }
+.step-body-inner { overflow: hidden; min-height: 0; }
+.step-body-content {
+  padding: 0 18px 22px 62px; display: flex; flex-direction: column; gap: 16px;
+  font-size: 14px; line-height: 1.7; color: var(--text);
+}
+.step-body-content p { margin: 0; color: var(--text-muted); }
+.step-body-content strong { color: var(--text); }
+.step-body-content ul, .step-body-content ol { margin: 0; padding-left: 20px; color: var(--text-muted); }
+.step-body-content li { margin-bottom: 4px; }
+.step-body-content h4 { font-size: 13px; color: var(--accent); margin: 0; text-transform: uppercase; letter-spacing: 0.03em; }
+
+.step-body-content table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.step-body-content th, .step-body-content td {
+  border: 1px solid var(--border); padding: 7px 9px; text-align: left; vertical-align: top;
+}
+.step-body-content th { color: var(--text-muted); font-weight: 500; background: var(--surface-2); }
+
+.ref-tag {
+  display: inline-block; font-size: 11.5px; color: var(--accent);
+  background: var(--accent-dim); padding: 3px 9px; border-radius: 100px;
+}
+.callout {
+  border-left: 3px solid var(--accent); background: var(--surface-2);
+  padding: 10px 14px; border-radius: 0 10px 10px 0; font-size: 13.5px; color: var(--text-muted);
+}
+.external-link-list { display: flex; flex-direction: column; gap: 4px; }
+
+/* ---------- copy blocks ---------- */
+.copy-block {
+  border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #0d0d12;
+}
+.copy-block-head {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--surface-2); padding: 8px 12px; font-size: 12px; color: var(--text-muted);
+}
+.copy-btn {
+  background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+  font-size: 11.5px; padding: 4px 10px; border-radius: 100px; cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+.copy-btn.copied { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.copy-block pre {
+  margin: 0; padding: 14px; overflow-x: auto; font-size: 12.5px; line-height: 1.6;
+  font-family: "SFMono-Regular", Consolas, monospace; color: #d7d7de; white-space: pre-wrap; word-break: break-word;
+}
+
+/* ---------- notes block ---------- */
+.notes-block { border: 1px dashed var(--border); border-radius: 10px; padding: 12px 14px; }
+.notes-label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.notes-input {
+  width: 100%; min-height: 64px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-family: inherit; font-size: 13.5px; padding: 9px 11px;
+  resize: vertical; outline: none;
+}
+.notes-input:focus { border-color: var(--accent); }
+
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+@media (max-width: 640px) {
+  .wrap { padding: 40px 16px 80px; }
+  .page-head h1 { font-size: 26px; }
+  .step-body-content { padding-left: 18px; }
+}
