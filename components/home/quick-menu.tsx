@@ -48,11 +48,10 @@ export function QuickMenu() {
   return (
     <section className="border-b border-line bg-surface">
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8">
-        <FadeIn>
-          <div className="grid grid-cols-3 gap-3 sm:grid-cols-6 sm:gap-4">
-            {ITEMS.map((item) => (
+        <div className="grid grid-cols-3 gap-3 sm:grid-cols-6 sm:gap-4">
+          {ITEMS.map((item, i) => (
+            <FadeIn key={item.label} delay={i * 0.06}>
               <Link
-                key={item.label}
                 href={item.href}
                 className="group flex flex-col items-center gap-3 rounded-2xl border border-line bg-background px-3 py-6 text-center transition-colors hover:border-accent/40 hover:bg-accent-soft"
               >
@@ -73,9 +72,9 @@ export function QuickMenu() {
                   {item.label}
                 </span>
               </Link>
-            ))}
-          </div>
-        </FadeIn>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

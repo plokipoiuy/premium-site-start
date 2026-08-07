@@ -11,18 +11,16 @@ export function Stats() {
   return (
     <section className="bg-accent-strong">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-        <FadeIn>
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-            {STATS.map((stat) => (
-              <div key={stat.label} className="text-center sm:text-left">
-                <p className="font-display text-[32px] font-medium text-white sm:text-[40px]">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-[13px] tracking-wide text-white/70">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </FadeIn>
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          {STATS.map((stat, i) => (
+            <FadeIn key={stat.label} delay={i * 0.08} className="text-center sm:text-left">
+              <p className="font-display text-[32px] font-medium text-white sm:text-[40px]">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-[13px] tracking-wide text-white/70">{stat.label}</p>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

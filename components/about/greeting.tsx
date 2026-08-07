@@ -3,7 +3,7 @@ import { HOSPITAL_NAME } from "@/lib/nav";
 
 export function Greeting() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+    <section id="greeting" className="mx-auto max-w-7xl scroll-mt-24 px-5 py-20 sm:px-8">
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.4fr] lg:items-center">
         <FadeIn>
           <div className="aspect-[4/5] w-full max-w-sm rounded-3xl bg-gradient-to-br from-accent-soft via-accent/15 to-accent-strong/20" />

@@ -21,21 +21,22 @@ export function NoticesPreview() {
           </Link>
         </FadeIn>
 
-        <FadeIn delay={0.1} className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
-          {NOTICES.slice(0, 6).map((notice) => (
-            <Link
-              key={notice.title}
-              href="/notices"
-              className="flex items-center justify-between gap-4 bg-surface px-6 py-5 transition-colors hover:bg-accent-soft"
-            >
-              <div className="min-w-0">
-                <span className="text-[12px] font-semibold text-accent">{notice.category}</span>
-                <p className="mt-1 truncate text-[15px] text-text-primary">{notice.title}</p>
-              </div>
-              <span className="shrink-0 text-[13px] text-text-muted">{notice.date}</span>
-            </Link>
+        <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+          {NOTICES.slice(0, 6).map((notice, i) => (
+            <FadeIn key={notice.title} delay={(i % 4) * 0.06}>
+              <Link
+                href="/notices"
+                className="flex items-center justify-between gap-4 bg-surface px-6 py-5 transition-colors hover:bg-accent-soft"
+              >
+                <div className="min-w-0">
+                  <span className="text-[12px] font-semibold text-accent">{notice.category}</span>
+                  <p className="mt-1 truncate text-[15px] text-text-primary">{notice.title}</p>
+                </div>
+                <span className="shrink-0 text-[13px] text-text-muted">{notice.date}</span>
+              </Link>
+            </FadeIn>
           ))}
-        </FadeIn>
+        </div>
 
         <Link
           href="/notices"

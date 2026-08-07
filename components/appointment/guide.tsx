@@ -9,7 +9,7 @@ const STEPS = [
 
 export function Guide() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+    <section id="guide" className="mx-auto max-w-7xl scroll-mt-24 px-5 py-20 sm:px-8">
       <FadeIn>
         <p className="text-[13px] font-semibold tracking-[0.2em] text-accent">HOW IT WORKS</p>
         <h2 className="mt-3 font-display text-[28px] font-medium tracking-tight text-text-primary sm:text-[34px]">

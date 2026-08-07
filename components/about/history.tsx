@@ -11,7 +11,7 @@ const HISTORY = [
 
 export function History() {
   return (
-    <section className="border-y border-line bg-surface">
+    <section id="history" className="scroll-mt-24 border-y border-line bg-surface">
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <FadeIn>
           <p className="text-[13px] font-semibold tracking-[0.2em] text-accent">HISTORY</p>

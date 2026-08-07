@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { FadeIn } from "@/components/fade-in";
 import { HEALTH_ARTICLES_FULL } from "@/lib/content";
 
@@ -10,7 +11,11 @@ const CATEGORIES = [
 ];
 
 export function ArticleBrowser() {
-  const [active, setActive] = useState("전체");
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams.get("category");
+  const [active, setActive] = useState(
+    initialCategory && (CATEGORIES as string[]).includes(initialCategory) ? initialCategory : "전체",
+  );
 
   const articles = useMemo(
     () =>

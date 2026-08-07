@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { PageHero } from "@/components/page-hero";
 import { ArticleBrowser } from "@/components/health-info/article-browser";
 
@@ -15,7 +16,9 @@ export default function HealthInfoPage() {
         breadcrumb="건강정보"
         description="전문 의료진이 직접 전하는 질환 정보와 건강 관리 칼럼을 확인하세요."
       />
-      <ArticleBrowser />
+      <Suspense>
+        <ArticleBrowser />
+      </Suspense>
     </>
   );
 }

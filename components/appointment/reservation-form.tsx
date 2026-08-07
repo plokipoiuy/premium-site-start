@@ -8,7 +8,7 @@ export function ReservationForm() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section className="border-t border-line bg-surface">
+    <section id="reservation" className="scroll-mt-24 border-t border-line bg-surface">
       <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8">
         <FadeIn>
           <p className="text-[13px] font-semibold tracking-[0.2em] text-accent">RESERVATION</p>

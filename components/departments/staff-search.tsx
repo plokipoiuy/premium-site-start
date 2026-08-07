@@ -3,7 +3,7 @@ import { FadeIn } from "@/components/fade-in";
 
 export function StaffSearch() {
   return (
-    <section className="border-t border-line bg-surface">
+    <section id="find-a-doctor" className="scroll-mt-24 border-t border-line bg-surface">
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <FadeIn>
           <div className="grid gap-8 rounded-3xl bg-accent-strong p-8 sm:p-12 lg:grid-cols-[1.3fr_1fr] lg:items-center">
