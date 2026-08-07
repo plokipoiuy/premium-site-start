@@ -1,0 +1,1312 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>배우고 준비해야 하는 단계 — 고객 여정 플레이북</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="journey-shared.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back-link" href="journey.html">&larr; 전체 여정으로</a>
+  <div class="brand"><span class="brand-dot"></span><span class="brand-name">전광판</span></div>
+</div>
+
+<div class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Stage A · 14단계</p>
+    <h1>배우고 준비해야 하는 단계</h1>
+    <p>환경 세팅부터 실습, 리서치, 샘플 제작까지 — 첫 문의가 오기 전에 갖춰야 할 것들입니다.</p>
+    <div class="progress-row">
+      <div class="progress-track"><div class="progress-fill" id="pageProgressFill"></div></div>
+      <span class="progress-label" id="pageProgressLabel"></span>
+    </div>
+  </div>
+
+  <div class="steps">
+    <section class="step" id="a1" data-step-id="a1">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">01</span>
+        <button class="step-status" data-status-for="a1" type="button"></button>
+        <span class="step-title">Claude Code 작업 환경 세팅</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>Claude Code로 아임웹·식스샵 코드위젯 작업을 하기 전에, 스킬과 CLAUDE.md를 먼저 세팅해야 강의와 같은 결과물이 나옵니다. 아래 두 방법 중 하나를 고르세요.</p>
+
+        <h4>방법 1 — 원클릭 설치 키트 (Mac, 권장)</h4>
+        <ol>
+          <li><code>claude-setup-kit.zip</code> 다운로드 후 압축 해제</li>
+          <li>폴더 안의 <code>설치하기.command</code> 를 우클릭 → 열기 → 열기 ("확인되지 않은 개발자" 경고가 떠도 정상) → 스킬 6종 자동 설치</li>
+          <li>폴더 안의 <code>CLAUDE.md</code> 를 작업할 프로젝트 폴더 최상위에 복사 ⭐</li>
+          <li>Claude Code 대화창에서 <code>ui-ux-pro-max</code> 플러그인 1개만 추가 설치 (아래 명령 참고) 후 <code>/plugin</code> 메뉴에서 선택 설치</li>
+          <li>claude.ai 설정 → 커넥터에서 Figma, Adobe Express, lazyweb 연결</li>
+        </ol>
+
+        <h4>방법 2 — 웹 버전 (claude.ai/code), 설치 아예 필요 없음</h4>
+        <ol>
+          <li>github.com 가입/로그인</li>
+          <li>스타터 저장소 <code>haesam/premium-site-start</code> (CLAUDE.md + 디자인 스킬 6종이 이미 들어있음) 페이지에서 <strong>Use this template → Create a new repository</strong> 클릭 (버튼이 안 보이면 우측 상단 Fork) → 본인 계정으로 복사</li>
+          <li>claude.ai/code 접속 → 처음이면 GitHub 연결 승인(Authorize) → 방금 복사한 저장소 선택 → 세션 시작</li>
+          <li>바로 요청: "포트폴리오 사이트 만들어줘" → 스킬·CLAUDE.md 설치 단계가 전부 생략됨</li>
+          <li><code>ui-ux-pro-max</code> 플러그인은 세션 대화창에서 마켓플레이스 명령 입력, 커넥터(Figma 등)는 claude.ai 설정에서 동일하게 연결</li>
+        </ol>
+        <div class="callout">데스크톱(로컬)에서 작업하는 사람도 이 저장소를 git clone 하거나 GitHub에서 ZIP으로 받으면, 키트 없이 같은 세팅으로 바로 시작할 수 있습니다.</div>
+
+        <h4>0. 사전 준비물</h4>
+        <ul>
+          <li>Claude 유료 계정 (Pro 이상)</li>
+          <li>Claude Code 설치 — 데스크톱 앱 또는 터미널에서 <code>npm install -g @anthropic-ai/claude-code</code></li>
+          <li>Node.js 설치 (nodejs.org — LTS 버전)</li>
+          <li>Git 설치 (Mac은 기본 포함, 터미널에서 <code>git --version</code>으로 확인)</li>
+        </ul>
+
+        <p>키트 없이 직접 설치하는 경우, Anthropic 공식 스킬 3종(frontend-design / theme-factory / webapp-testing)은 아래 마켓플레이스를 추가하면 한 번에 받을 수 있습니다.</p>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>필수 스킬 3종 설치</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>/plugin marketplace add anthropics/skills</code></pre>
+        </div>
+
+        <p>디자인 결과물 퀄리티에 가장 직접적으로 영향을 주는 <code>ui-ux-pro-max</code> 플러그인(50+ 디자인 스타일, 161개 컬러 팔레트, 57개 폰트 페어링)은 아래 명령으로 설치합니다.</p>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>ui-ux-pro-max 플러그인 설치</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill</code></pre>
+        </div>
+
+        <h4>커넥터 연결 (claude.ai 설정)</h4>
+        <p>스킬이 아니라 claude.ai의 설정 → 커넥터에서 각자 계정으로 연결하는 항목입니다.</p>
+        <ul>
+          <li>Figma — 디자인 ↔ 코드 양방향 변환</li>
+          <li>Adobe Express — 포스터/SNS 그래픽 등 시각 디자인 제작</li>
+          <li>lazyweb — 실제 서비스 UI 레퍼런스 검색, 목업 생성</li>
+          <li>(선택) 사용 중인 웹사이트 빌더, AI 이미지/영상 생성 커넥터</li>
+        </ul>
+
+        <p>설치가 끝나면 Claude Code를 열고 아래처럼 물어봐서 확인합니다. <code>3d-scroll-website</code>, <code>remotion-best-practices</code>, <code>find-skills</code>, <code>frontend-design</code>, <code>theme-factory</code>, <code>webapp-testing</code>, <code>ui-ux-pro-max</code> 가 전부 보이면 세팅 완료입니다.</p>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>설치 확인 프롬프트</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>지금 설치된 디자인 관련 스킬 목록 보여줘</code></pre>
+        </div>
+
+        <div class="callout">애니메이션 스킬 5종(Three.js / GSAP / Design DNA / Motion Design / Genjutsu)은 선택 사항입니다. 6종 + CLAUDE.md만으로도 프리미엄 사이트는 충분히 나오고, 결과물이 너무 정적으로 느껴질 때 하나씩 얹는 애드온입니다. Genjutsu만 <code>/plugin</code> 방식이라 별도 명령이 필요합니다.</div>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>애니메이션 스킬 설치 (선택)</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>npx skills add cloudai-x/threejs-skills
+npx skills add greensock/gsap-skills
+npx skills add zanwei/design-dna
+npx skills add lottiefiles/motion-design-skill</code></pre>
+        </div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a1" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a2" data-step-id="a2">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">02</span>
+        <button class="step-status" data-status-for="a2" type="button"></button>
+        <span class="step-title">웹빌더 기초 익히기 (아임웹·식스샵)</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>클로드로 코드위젯을 만들기 전에, 아임웹·식스샵 같은 웹빌더로 기본 원페이지·회사 홈페이지를 직접 만들어보는 기초 실습입니다. 아래 영상과 자료를 순서대로 따라해보세요.</p>
+
+        <div class="external-link-list">
+          <a href="https://www.youtube.com/watch?si=GbkKCuZWp0n1weRA&v=8O93l-V4wrs&feature=youtu.be" target="_blank" rel="noopener">[아임웹 교육] 원페이지 사이트 만들기① →</a>
+          <a href="https://www.youtube.com/watch?si=jGS6iNou2GrZ2F2C&v=bE_7Yubvya4&feature=youtu.be" target="_blank" rel="noopener">[아임웹 교육] 원페이지 사이트 만들기② →</a>
+          <a href="https://www.youtube.com/watch?si=C-qMmT-c9SJavtYs&v=DD6IDb5q5PI&feature=youtu.be" target="_blank" rel="noopener">[아임웹 교육] 회사 홈페이지 디자인하기① →</a>
+          <a href="https://www.youtube.com/watch?v=WY0jlEH9WNw" target="_blank" rel="noopener">[아임웹 교육] 회사 홈페이지 디자인하기② →</a>
+          <a href="https://drive.google.com/drive/folders/1P-DBcDPRLcF7FcZz6bvgeNK_MLfSG1V2" target="_blank" rel="noopener">AI홈페이지수익화 AtoZ 자료 (구글드라이브) →</a>
+        </div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a2" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a3" data-step-id="a3">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">03</span>
+        <button class="step-status" data-status-for="a3" type="button"></button>
+        <span class="step-title">클로드 코딩 실습 ① 플로팅 액션 버튼(FAB)</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>고객요청 중 가장 많은 요청 중 하나가 화면에 둥둥 떠다니는 플로팅 액션 버튼(FAB)입니다. FAB는 코드 위젯에 붙이는 것이 아니라, 아래 3가지를 준비해서 진행합니다: ① 아이콘 이미지 ② 링크(예: 카카오채널 링크) ③ 플로팅 버튼 코드.</p>
+
+        <ol>
+          <li><strong>STEP1)</strong> 아래 코드를 복사합니다.</li>
+          <li><strong>STEP2)</strong> 복사한 코드를 <strong>[환경설정 > SEO(검색엔진최적화) > Footer Code]</strong>에 붙여넣기 합니다.</li>
+          <li><strong>STEP3)</strong> 이 코드를 클로드에도 붙여넣고 "프리뷰를 보여줘"라고 요청합니다. 아이콘이 표시가 안 되면 "아이콘까지 보여줘"라고 한 번 더 말해주세요.</li>
+          <li><strong>STEP4)</strong> 이후로는 클로드와 자유롭게 작업합니다. 텍스트나 아이콘 변경을 요청하면 클로드가 알아서 바꿔줍니다. 클로드가 잘 못 알아들으면 이렇게 다시 알려주세요: "아임웹은 html코드창에 html, css, javascript를 모두 하나의 코드로 넣어야 해. 그리고 header는 별도로 세팅이 되어있기 때문에 header는 빼고 코드를 작성해야해."</li>
+        </ol>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>플로팅 버튼 코드</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>&lt;!-- 플로팅 배너 CSS --&gt;
+&lt;style&gt;
+/* PC 플로팅 배너 스타일 */
+.floBanPc {
+position: fixed;
+bottom: 80px;
+right: 20px;
+z-index: 99;
+background: white;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+overflow: hidden;
+}
+/* 모바일 플로팅 배너 스타일 */
+.floBanMob {
+position: fixed;
+bottom: 80px;
+right: 16px;
+z-index: 99;
+background: white;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+overflow: hidden;
+}
+/* 버튼 공통 스타일 */
+.floBanBtn {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 12px 16px;
+text-decoration: none;
+color: #333;
+transition: background 0.2s;
+border-bottom: 1px solid #eee;
+cursor: pointer;
+}
+.floBanBtn:last-child {
+border-bottom: none;
+}
+.floBanBtn:hover {
+background: #f5f5f5;
+}
+.floBanBtn ion-icon {
+font-size: 24px;
+margin-bottom: 4px;
+}
+.floBanBtn span {
+font-size: 12px;
+font-weight: 500;
+white-space: nowrap;
+}
+/* 모바일 버튼 스타일 */
+.floBanMob .floBanBtn {
+padding: 10px 14px;
+}
+.floBanMob .floBanBtn ion-icon {
+font-size: 22px;
+}
+.floBanMob .floBanBtn span {
+font-size: 11px;
+}
+&lt;/style&gt;
+
+&lt;!-- ion-icons 라이브러리 로드 (페이지에 한 번만 추가) --&gt;
+&lt;script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"&gt;&lt;/script&gt;
+&lt;script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"&gt;&lt;/script&gt;
+
+&lt;!-- 플로팅 배너 HTML --&gt;
+&lt;!-- PC 플로팅 배너 --&gt;
+&lt;div class="floBanPc hidden-md hidden-sm hidden-xs"&gt;
+&lt;a href="javascript:void(0);" onclick="SITE.openModalMenu('m2025102317c1bc81f404e', 'm20251001cf71c232d51fa');" class="floBanBtn"&gt;
+&lt;ion-icon name="chatbox-ellipses"&gt;&lt;/ion-icon&gt;
+&lt;span&gt;상담신청&lt;/span&gt;
+&lt;/a&gt;
+&lt;a href="블로그링크" target="_blank" class="floBanBtn"&gt;
+&lt;ion-icon name="book"&gt;&lt;/ion-icon&gt;
+&lt;span&gt;블로그&lt;/span&gt;
+&lt;/a&gt;
+&lt;a href="카톡채널링크" target="_blank" class="floBanBtn"&gt;
+&lt;ion-icon name="chatbubbles"&gt;&lt;/ion-icon&gt;
+&lt;span&gt;카톡채널&lt;/span&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- 모바일 플로팅 배너 --&gt;
+&lt;div class="floBanMob hidden-lg"&gt;
+&lt;a href="javascript:void(0);" onclick="SITE.openModalMenu('m2025102317c1bc81f404e', 'm20251001cf71c232d51fa');" class="floBanBtn"&gt;
+&lt;ion-icon name="chatbox-ellipses"&gt;&lt;/ion-icon&gt;
+&lt;span&gt;상담신청&lt;/span&gt;
+&lt;/a&gt;
+&lt;a href="블로그링크" target="_blank" class="floBanBtn"&gt;
+&lt;ion-icon name="book"&gt;&lt;/ion-icon&gt;
+&lt;span&gt;블로그&lt;/span&gt;
+&lt;/a&gt;
+&lt;a href="카톡채널링크" target="_blank" class="floBanBtn"&gt;
+&lt;ion-icon name="chatbubbles"&gt;&lt;/ion-icon&gt;
+&lt;span&gt;카톡채널&lt;/span&gt;
+&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a3" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a4" data-step-id="a4">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">04</span>
+        <button class="step-status" data-status-for="a4" type="button"></button>
+        <span class="step-title">클로드 코딩 실습 ② 탭메뉴 만들기</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>탭메뉴도 자주 쓰는 기능이지만 아임웹 기본 위젯은 스타일이 단조롭습니다. 아래 코드를 클로드에 복사 붙여넣기해서 원하는 대로 커스터마이즈하세요. 텍스트는 "OOO을 XXX로 수정해줘"라고 명령하면 알아서 수정해줍니다.</p>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>탭메뉴 코드</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>&lt;!-- ============================================ --&gt;
+&lt;!-- 예제 1: 탭 메뉴 (Tab Menu) --&gt;
+&lt;!-- ============================================ --&gt;
+
+&lt;div class="tab-container"&gt;
+    &lt;div class="tab-buttons"&gt;
+        &lt;button class="tab-btn active" onclick="openTab(event, 'tab1')"&gt;서비스 소개&lt;/button&gt;
+        &lt;button class="tab-btn" onclick="openTab(event, 'tab2')"&gt;이용 방법&lt;/button&gt;
+        &lt;button class="tab-btn" onclick="openTab(event, 'tab3')"&gt;요금 안내&lt;/button&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="tab1" class="tab-content active"&gt;
+        &lt;h3&gt;서비스 소개&lt;/h3&gt;
+        &lt;p&gt;고객님께 최고의 서비스를 제공하기 위해 노력하고 있습니다. 전문적인 솔루션과 맞춤형 컨설팅을 통해 비즈니스 성장을 지원합니다.&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;✓ 전문가 1:1 상담&lt;/li&gt;
+            &lt;li&gt;✓ 맞춤형 솔루션 제공&lt;/li&gt;
+            &lt;li&gt;✓ 24시간 고객 지원&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="tab2" class="tab-content"&gt;
+        &lt;h3&gt;이용 방법&lt;/h3&gt;
+        &lt;p&gt;간단한 3단계로 서비스를 이용하실 수 있습니다.&lt;/p&gt;
+        &lt;ol&gt;
+            &lt;li&gt;&lt;strong&gt;회원가입&lt;/strong&gt; - 간편하게 회원가입을 진행합니다&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;상담신청&lt;/strong&gt; - 원하시는 서비스를 선택합니다&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;서비스 이용&lt;/strong&gt; - 전문가와 함께 시작합니다&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="tab3" class="tab-content"&gt;
+        &lt;h3&gt;요금 안내&lt;/h3&gt;
+        &lt;p&gt;합리적인 가격으로 최고의 서비스를 경험하세요.&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;베이직 플랜: 월 30,000원&lt;/li&gt;
+            &lt;li&gt;프로 플랜: 월 50,000원&lt;/li&gt;
+            &lt;li&gt;프리미엄 플랜: 월 100,000원&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.tab-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.tab-buttons {
+    display: flex;
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.tab-btn:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+.tab-btn.active {
+    color: #0066ff;
+    background: #fff;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #0066ff;
+}
+
+.tab-content {
+    display: none;
+    padding: 30px;
+    animation: fadeIn 0.4s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    color: #212529;
+    margin-bottom: 16px;
+    font-size: 22px;
+}
+
+.tab-content p {
+    color: #495057;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.tab-content ul,
+.tab-content ol {
+    color: #495057;
+    line-height: 1.8;
+    padding-left: 20px;
+}
+
+.tab-content li {
+    margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .tab-btn {
+        padding: 14px 12px;
+        font-size: 13px;
+    }
+    .tab-content {
+        padding: 20px;
+    }
+    .tab-content h3 {
+        font-size: 18px;
+    }
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+function openTab(evt, tabName) {
+    var i, tabContent, tabBtns;
+    
+    tabContent = document.getElementsByClassName("tab-content");
+    for (i = 0; i &lt; tabContent.length; i++) {
+        tabContent[i].classList.remove("active");
+    }
+    
+    tabBtns = document.getElementsByClassName("tab-btn");
+    for (i = 0; i &lt; tabBtns.length; i++) {
+        tabBtns[i].classList.remove("active");
+    }
+    
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a4" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a5" data-step-id="a5">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">05</span>
+        <button class="step-status" data-status-for="a5" type="button"></button>
+        <span class="step-title">클로드 코딩 실습 ③ 숫자 카운트업</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>좀 더 화려한 인터랙션을 원하는 고객에게는 애니메이션만한 게 없습니다. 아래 코드는 숫자가 카운트업 되는 애니메이션입니다. 복사-붙여넣기로 클로드에서 원하는 대로 수정하세요.</p>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>카운트업 코드</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>&lt;!-- ion-icons 라이브러리 로드 (페이지에 한 번만 추가) --&gt;
+&lt;script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"&gt;&lt;/script&gt;
+&lt;script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"&gt;&lt;/script&gt;
+
+&lt;!-- 카운터 애니메이션 --&gt;
+&lt;div class="counter-section"&gt;
+    &lt;h2 class="counter-main-title"&gt;
+        &lt;ion-icon name="bar-chart-outline" style="vertical-align: middle; margin-right: 10px;"&gt;&lt;/ion-icon&gt;
+        숫자로 보는 우리 회사
+    &lt;/h2&gt;
+    
+    &lt;div class="counter-grid"&gt;
+        &lt;div class="counter-box"&gt;
+            &lt;div class="counter-icon"&gt;
+                &lt;ion-icon name="people-outline"&gt;&lt;/ion-icon&gt;
+            &lt;/div&gt;
+            &lt;div class="counter-number" data-target="15000"&gt;0&lt;/div&gt;
+            &lt;div class="counter-label"&gt;누적 고객&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="counter-box"&gt;
+            &lt;div class="counter-icon"&gt;
+                &lt;ion-icon name="star-outline"&gt;&lt;/ion-icon&gt;
+            &lt;/div&gt;
+            &lt;div class="counter-number" data-target="4.9"&gt;0&lt;/div&gt;
+            &lt;div class="counter-label"&gt;고객 만족도&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="counter-box"&gt;
+            &lt;div class="counter-icon"&gt;
+                &lt;ion-icon name="trending-up-outline"&gt;&lt;/ion-icon&gt;
+            &lt;/div&gt;
+            &lt;div class="counter-number" data-target="98"&gt;0&lt;/div&gt;
+            &lt;div class="counter-suffix"&gt;%&lt;/div&gt;
+            &lt;div class="counter-label"&gt;재구매율&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.counter-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.counter-main-title {
+    text-align: center;
+    color: #fff;
+    font-size: 32px;
+    margin-bottom: 50px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.counter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.counter-box {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 40px 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.counter-box:hover {
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.counter-icon {
+    margin-bottom: 20px;
+}
+
+.counter-icon ion-icon {
+    font-size: 56px;
+    color: #fff;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.counter-number {
+    display: inline-block;
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.counter-suffix {
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-left: 4px;
+    vertical-align: super;
+}
+
+.counter-label {
+    font-size: 16px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .counter-section {
+        margin: 40px auto;
+        padding: 30px 15px;
+    }
+    .counter-main-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .counter-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+    .counter-box {
+        padding: 30px 15px;
+    }
+    .counter-icon ion-icon {
+        font-size: 42px;
+    }
+    .counter-number {
+        font-size: 36px;
+    }
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+// 카운터 애니메이션 함수
+function animateCounter(element, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) =&gt; {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        
+        // 소수점이 있는 숫자인지 확인
+        const hasDecimal = end % 1 !== 0;
+        const current = progress * (end - start) + start;
+        
+        if (hasDecimal) {
+            element.textContent = current.toFixed(1);
+        } else {
+            element.textContent = Math.floor(current).toLocaleString();
+        }
+        
+        if (progress &lt; 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Intersection Observer로 뷰포트 진입 감지
+const observerOptions = {
+    threshold: 0.5
+};
+
+const observer = new IntersectionObserver((entries) =&gt; {
+    entries.forEach(entry =&gt; {
+        if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll('.counter-number');
+            counters.forEach(counter =&gt; {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                animateCounter(counter, 0, target, 2000);
+            });
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// 페이지 로드 시 관찰 시작
+document.addEventListener('DOMContentLoaded', () =&gt; {
+    const counterSection = document.querySelector('.counter-section');
+    if (counterSection) {
+        observer.observe(counterSection);
+    }
+});
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a5" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a6" data-step-id="a6">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">06</span>
+        <button class="step-status" data-status-for="a6" type="button"></button>
+        <span class="step-title">만능 클로드 코딩 명령법 (프롬프트 템플릿)</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>클로드에게 코드위젯 작업을 명령할 때 매번 결과물 품질이 들쭉날쭉하지 않도록, 아래 4요소와 프롬프트 양식을 그대로 따라 쓰세요.</p>
+
+        <h4>클로드 코딩 명령에 들어갈 요소 4가지</h4>
+        <ol>
+          <li>용도 : 아임웹 코드위젯용 코드</li>
+          <li>기능 : 구현하고 싶은 기능</li>
+          <li>옵션 : 색상, 텍스트 내용 등 수정 가능한 요소</li>
+          <li>조건 : 필수조건, 제외조건 등</li>
+        </ol>
+
+        <h4>클로드 프롬프트에 명령하는 법</h4>
+        <ol>
+          <li>"참고 코드"와 "새로운 요청" 구분 명확히 하기 — <code>=====</code> 구분선으로 분리해서 기존 코드와 수정 요청을 헷갈리지 않게 합니다</li>
+          <li>코드 용도 언급하기 — "이 코드는 ~하는 코드야"라고 정확히 알려줍니다</li>
+          <li>주의사항 말하기 — 아임웹에서 꼭 지켜야 할 것들을 명시합니다</li>
+          <li>원하는 기능 구체적으로 말하기 — 변경할 대상은 큰따옴표("이렇게")로 감싸서 명확하게 지정합니다 (예: "카톡채널링크"를 "인스타그램"으로 바꿔줘)</li>
+        </ol>
+
+        <h4>아임웹 코딩 필수 프롬프트 명령</h4>
+        <ul>
+          <li>첫 대화 시작할 때 (딱 1번만!) — "header 를 절대 넣어선 안돼, body 에 넣을 코드만 만들어줘"</li>
+          <li>매번 포함해야 할 명령 — ① 용도 명시(예: 카운트업이 되는 코드야) ② 구체적인 기능(원하는 동작 자세히 설명)</li>
+        </ul>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>기본 프롬프트 양식</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>[ 참고 코드 ]
+(기존 코드가 있다면 여기에 붙여넣기)
+
+======
+
+[ 코드 용도 언급 ] 
+이 코드는 ~ 하는 코드야
+
+[ 주의사항 언급 ]
+header 를 절대 넣어선 안돼, body 에 넣을 코드만 만들어줘
+
+[ 구체적인 기능 명령 ] 
+여기에 원하는 기능 자세히 작성!
+변경할 텍스트나 요소는 "큰따옴표"로 감싸서 명확하게 지정하기</code></pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>예시 1 — 플로팅 버튼</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>[ 참고 코드 : 플로팅 버튼 코드 ]
+
+======
+
+[ 코드 용도 언급 ] 
+아임웹 코드로 짠 플로팅 버튼이야
+
+[ 주의사항 언급 ]
+header 를 절대 넣어선 안돼, body 에 넣을 코드만 만들어줘
+
+[ 구체적인 기능 명령 ] 
+"카톡채널링크" 를 "인스타그램" 으로 변경해줘
+아이콘도 인스타그램 아이콘으로 변경해줘</code></pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>예시 2 — 숫자 카운트업</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>[ 참고 코드 : 카운트업 코드 ]
+
+======
+
+[ 코드 용도 언급 ] 
+이 코드는 카운트업이 되는 아임웹 코드야
+
+[ 주의사항 언급 ]
+생략
+
+[ 구체적인 기능 명령 ] 
+"고객만족도" 부분은 빼고 코드를 다시 짜줘
+컬러는 변화하는 그라데이션이 좋을 것 같아</code></pre>
+        </div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a6" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a7" data-step-id="a7">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">07</span>
+        <button class="step-status" data-status-for="a7" type="button"></button>
+        <span class="step-title">클로드 코딩 실습 ④ 스크롤 텍스트 줌인 효과</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>스크롤을 내림에 따라 텍스트가 확대되면서 사라지는 스크롤 텍스트 줌인 효과입니다. 코드 안 주석을 참고해서 원하는 텍스트로 수정하세요. 처음엔 텍스트가 보이지 않으니 섹션 설정에서 배경색·텍스트색을 함께 설정해야 합니다.</p>
+
+        <div class="external-link-list">
+          <a href="https://youtube.com/shorts/W-lZL8S1aXE?feature=share" target="_blank" rel="noopener">참고 영상 (유튜브 쇼츠) →</a>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>스크롤 줌인 텍스트 코드</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>&lt;!-- =====================================================
+  [ 폰트 설정 ]
+  Noto Sans KR 900 (Black)
+  다른 폰트로 교체하려면 아래 link href만 수정하세요.
+====================================================== --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&amp;display=swap" rel="stylesheet"&gt;
+
+&lt;!-- =====================================================
+  [ 텍스트 내용 수정 ]
+  아래 두 div 안의 텍스트를 원하는 내용으로 바꾸세요.
+  줄바꿈이 필요하면 &lt;br&gt; 태그를 사용하세요.
+====================================================== --&gt;
+&lt;div id="brand-textscroll-trigger"&gt;
+  &lt;div id="brand-textscroll-wrap"&gt;
+
+    &lt;!-- 메인 타이틀 텍스트 --&gt;
+    &lt;div id="brand-textscroll-title"&gt;
+      TITLE TEXT
+    &lt;/div&gt;
+
+    &lt;!-- 서브텍스트 --&gt;
+    &lt;div id="brand-textscroll-subtitle"&gt;
+      SUBTITLE TEXT
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;style&gt;
+  /* ======================================================
+     [ 스크롤 트리거 영역 ]
+     height: 스크롤 거리. 클수록 천천히 확대됩니다.
+     (권장 범위: 300vh ~ 600vh)
+  ====================================================== */
+  #brand-textscroll-trigger {
+    height: 400vh;
+    position: relative;
+    /* 배경색 — 기본값 transparent (아임웹 페이지 배경을 그대로 사용)
+       직접 배경색을 지정하려면 아래 주석을 해제하고 색을 입력하세요. */
+    /* background: #0a0a0a; */
+  }
+
+  /* ======================================================
+     [ 고정 레이어 ]
+     fixed로 화면 중앙에 고정. 트리거 영역 밖에서는 JS로 숨김.
+  ====================================================== */
+  #brand-textscroll-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    visibility: visible; /* JS가 트리거 밖에서 hidden으로 변경 */
+    z-index: 10;         /* 다른 섹션 위에 올라올 z-index. 필요시 조정 */
+  }
+
+  /* ======================================================
+     [ 메인 타이틀 스타일 ]
+     top/left 값으로 화면 내 세로 위치를 조정할 수 있습니다.
+     양수 → 아래 / 음수 → 위
+  ====================================================== */
+  #brand-textscroll-title {
+    position: absolute;
+    top: calc(50% - 3vh);  /* 세로 위치 오프셋 — 수정 가능 */
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* 초기 글자 크기 (vw 또는 px) */
+    font-size: 6vw;
+
+    /* 글자 색상 */
+    color: #ffffff;
+
+    /* 자간 */
+    letter-spacing: 0.25em;
+
+    /* 굵기 (100 ~ 900) */
+    font-weight: 900;
+
+    /* 정렬 */
+    text-align: center;
+    white-space: nowrap;
+
+    /* 줄간격 */
+    line-height: 1.1;
+
+    /* 폰트 */
+    font-family: 'Noto Sans KR', sans-serif;
+
+    user-select: none;
+    pointer-events: none;
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+  }
+
+  /* ======================================================
+     [ 서브텍스트 스타일 ]
+  ====================================================== */
+  #brand-textscroll-subtitle {
+    position: absolute;
+    top: calc(50% + 4vh);  /* 세로 위치 오프셋 — 수정 가능 */
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* 초기 글자 크기 */
+    font-size: 1.6vw;
+
+    /* 글자 색상 (rgba로 투명도 조정 가능) */
+    color: rgba(255, 255, 255, 0.65);
+
+    /* 자간 */
+    letter-spacing: 0.35em;
+
+    /* 굵기 */
+    font-weight: 900;
+
+    /* 정렬 */
+    text-align: center;
+    white-space: nowrap;
+
+    /* 폰트 */
+    font-family: 'Noto Sans KR', sans-serif;
+
+    user-select: none;
+    pointer-events: none;
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+  }
+&lt;/style&gt;
+
+
+&lt;script&gt;
+(function () {
+  /* ======================================================
+     [ 메인 타이틀 애니메이션 설정 ]
+  ====================================================== */
+
+  // 최대 확대 배율 (예: 22 = 22배까지 커짐)
+  var BSTS_MAX_SCALE   = 22;
+
+  // 사라지기 시작하는 스크롤 시점 (0.0 ~ 1.0)
+  var BSTS_FADE_START  = 0.55;
+
+  // 완전히 사라지는 스크롤 시점 (FADE_START보다 커야 함)
+  var BSTS_FADE_END    = 0.88;
+
+  // 블러 시작 시점 (0.0 ~ 1.0)
+  var BSTS_BLUR_START  = 0.2;
+
+  // 블러 최대값 (px) — 클수록 더 흐려짐
+  var BSTS_BLUR_MAX    = 30;
+
+  /* ======================================================
+     [ 서브텍스트 애니메이션 설정 ]
+  ====================================================== */
+
+  // 서브텍스트 최대 확대 배율 (메인보다 작으면 시차감)
+  var BSTS_SUB_MAX_SCALE   = 14;
+
+  // 서브텍스트 확대 시작 시점 (메인보다 살짝 늦게)
+  var BSTS_SUB_SCALE_START = 0.05;
+
+  // 서브텍스트 사라지기 시작 시점
+  var BSTS_SUB_FADE_START  = 0.45;
+
+  // 서브텍스트 완전히 사라지는 시점
+  var BSTS_SUB_FADE_END    = 0.75;
+
+  // 서브텍스트 블러 시작 시점
+  var BSTS_SUB_BLUR_START  = 0.15;
+
+  // 서브텍스트 블러 최대값 (px)
+  var BSTS_SUB_BLUR_MAX    = 20;
+
+  /* ====================================================== */
+
+  var trigger  = document.getElementById('brand-textscroll-trigger');
+  var wrap     = document.getElementById('brand-textscroll-wrap');
+  var titleEl  = document.getElementById('brand-textscroll-title');
+  var subEl    = document.getElementById('brand-textscroll-subtitle');
+
+  function bstsLerp(a, b, t) {
+    t = t &lt; 0 ? 0 : t &gt; 1 ? 1 : t;
+    return a + (b - a) * t;
+  }
+
+  function bstsOnScroll() {
+    var rect     = trigger.getBoundingClientRect();
+    var total    = trigger.offsetHeight - window.innerHeight;
+    var scrolled = -rect.top;
+    var progress = scrolled / total;
+    progress = progress &lt; 0 ? 0 : progress &gt; 1 ? 1 : progress;
+
+    // 트리거 영역 안에서만 표시
+    var inView = rect.bottom &gt; 0 &amp;&amp; rect.top &lt; window.innerHeight;
+    wrap.style.visibility = inView ? 'visible' : 'hidden';
+
+    /* ── 메인 타이틀 ── */
+    var scale = bstsLerp(1, BSTS_MAX_SCALE, progress);
+
+    var opacity = 1;
+    if (progress &gt; BSTS_FADE_START) {
+      opacity = bstsLerp(1, 0, (progress - BSTS_FADE_START) / (BSTS_FADE_END - BSTS_FADE_START));
+    }
+
+    var blur = 0;
+    if (progress &gt; BSTS_BLUR_START) {
+      blur = bstsLerp(0, BSTS_BLUR_MAX, (progress - BSTS_BLUR_START) / (1 - BSTS_BLUR_START));
+    }
+
+    titleEl.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+    titleEl.style.opacity   = opacity;
+    titleEl.style.filter    = 'blur(' + blur + 'px)';
+
+    /* ── 서브텍스트 ── */
+    var subP = (progress - BSTS_SUB_SCALE_START) / (1 - BSTS_SUB_SCALE_START);
+    subP = subP &lt; 0 ? 0 : subP &gt; 1 ? 1 : subP;
+    var subScale = bstsLerp(1, BSTS_SUB_MAX_SCALE, subP);
+
+    var subOpacity = 1;
+    if (progress &gt; BSTS_SUB_FADE_START) {
+      subOpacity = bstsLerp(1, 0, (progress - BSTS_SUB_FADE_START) / (BSTS_SUB_FADE_END - BSTS_SUB_FADE_START));
+    }
+
+    var subBlur = 0;
+    if (progress &gt; BSTS_SUB_BLUR_START) {
+      subBlur = bstsLerp(0, BSTS_SUB_BLUR_MAX, (progress - BSTS_SUB_BLUR_START) / (1 - BSTS_SUB_BLUR_START));
+    }
+
+    subEl.style.transform = 'translate(-50%, -50%) scale(' + subScale + ')';
+    subEl.style.opacity   = subOpacity;
+    subEl.style.filter    = 'blur(' + subBlur + 'px)';
+  }
+
+  window.addEventListener('scroll', bstsOnScroll, { passive: true });
+  bstsOnScroll(); // 초기 실행
+}());
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a7" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a8" data-step-id="a8">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">08</span>
+        <button class="step-status" data-status-for="a8" type="button"></button>
+        <span class="step-title">클로드 코딩 실습 ⑤ 디자인 캡쳐 → 코드 변환</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>아임웹에 원하는 레이아웃을 코드로 구현하는 실습입니다. 참고할 디자인(레퍼런스 사이트, 스크린샷 등)을 캡쳐한 뒤 클로드에게 그대로 보여주고 "이 디자인처럼 아임웹 코드위젯 코드로 만들어줘"라고 요청하면, 캡쳐 이미지를 분석해서 레이아웃·색상·타이포그래피를 코드로 변환해줍니다. 꼭 직접 따라해보고 연습하세요.</p>
+        <div class="callout">이 단계는 원본 강의 자료에도 별도의 고정 코드 예시 없이 "직접 캡쳐 후 클로드에게 프롬프트로 요청"하는 실습 형태로만 안내되어 있습니다. 참고할 캡쳐 이미지와, 원하는 변경사항(색상/텍스트/배치)을 함께 전달하는 것이 핵심입니다.</div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a8" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a9" data-step-id="a9">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">09</span>
+        <button class="step-status" data-status-for="a9" type="button"></button>
+        <span class="step-title">AI 이미지·영상 생성 노하우</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>AI로 이미지·영상을 생성할 때 받은 프롬프트를 그대로 쓰기보다, 요소별로 분석해서 내 브랜드에 맞게 수정하는 습관을 들이면 결과물 품질이 훨씬 좋아집니다.</p>
+
+        <h4>받은 프롬프트 활용법</h4>
+        <ol>
+          <li>영문 프롬프트 복사</li>
+          <li>요소별 분석 — 클로드/AI에게: "다음의 프롬프트를 요소별로 분석해줘"</li>
+          <li>원하는 내용으로 수정</li>
+          <li>영문 프롬프트 요청</li>
+          <li>AI에 사용</li>
+        </ol>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>예시 프롬프트 1 — 와이드샷</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>A cinematic wide shot of a lone figure walking through a rain-soaked city street at night. Neon signs reflect in puddles on the wet pavement, creating colorful streaks of light. The scene has a noir atmosphere with dramatic contrasts between the bright neon lights and deep shadows. Captured with a 35mm anamorphic lens, the image has a slight blue-orange color grading typical of modern films.</code></pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>예시 프롬프트 2 — 클로즈업</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>A cinematic close-up shot of a lone figure's upper body walking through a rain-soaked city street at night. Neon signs reflect in puddles on the wet pavement behind them, casting colorful streaks of light across their face. The scene maintains a noir atmosphere with dramatic contrasts between bright neon highlights and deep shadows. Captured with a 35mm anamorphic lens, featuring subtle lens flares and blue-orange color grading typical of modern films.</code></pre>
+        </div>
+
+        <h4>이미지 생성 노하우</h4>
+        <ol>
+          <li><strong>이미지 구성 요소별 명령</strong>: 장면(주인공, 배경) / 필터 / 질감 / 표현기법 / 분위기</li>
+          <li><strong>레퍼런스 활용</strong>: 샘플 이미지 / 샘플 프롬프트 / 샘플 스케치</li>
+          <li><strong>다양한 도구 교차 활용</strong>: 나노바나나 / 시드림 / 챗지피티 / 미드저니 / Firefly</li>
+        </ol>
+        <div class="external-link-list">
+          <a href="https://labs.google/flow/about" target="_blank" rel="noopener">Google Flow →</a>
+          <a href="https://higgsfield.ai/" target="_blank" rel="noopener">Higgsfield AI →</a>
+        </div>
+
+        <div class="callout">영상 생성 팁: 텍스트 → 이미지(한 컷) → 영상 순서로 만드세요.<br>프롬프트 팁: "~~만들어줘" 라고 바로 요청하지 말고, "프롬프트를 만들어줘"라고 먼저 요청하세요.</div>
+
+        <h4>유니콘AI로 화려함 끼얹기</h4>
+        <p><a href="https://www.unicorn.studio/" target="_blank" rel="noopener">Unicorn Studio (No-code WebGL Tool) →</a></p>
+        <p>작업 흐름: 템플릿 선택 → 좌측 레이어 선택 → 우측 커스텀 → Export → Embed → HTML 코드 복사 → 아임웹 디자인모드 → 코드위젯 추가 → 설정 → 코드 붙여넣기 (첫째줄 width: 100%; 로 수정) → 코드위젯 우클릭 → 가로 영역 확장 → 섹션 설정 → 기본 그리드 간격: 해제, 값 0px (가로 100% 확장은 선택사항)</p>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a9" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a10" data-step-id="a10">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">10</span>
+        <button class="step-status" data-status-for="a10" type="button"></button>
+        <span class="step-title">motionsites.ai × 식스샵 프로 MCP로 3D 애니메이션 섹션 넣기</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>motionsites.ai에서 프리미엄 애니메이션·3D 섹션 프롬프트를 복사한 뒤, Claude Code에서 식스샵 프로용 코드로 변환하고, 식스샵 프로 MCP로 바로 반영하는 6단계 과정입니다. 별도 배포(Vercel/GitHub) 없이 끝납니다. 필요한 것: motionsites.ai 무료 계정 · Claude Code(무료 티어로 충분) · 식스샵 프로 계정(MCP는 무료 플랜까지 개방).</p>
+
+        <table>
+          <tr><th>STEP</th><th>내용</th></tr>
+          <tr><td>01 · motionsites.ai란</td><td>흔한 레이아웃·스톡 이미지 대신, 프리미엄 애니메이션·3D 웹사이트용 완성 프롬프트 라이브러리. Sites(완성 페이지) / Sections(개별 컴포넌트, 가장 흔히 씀) / Backgrounds(독립 배경) 3가지 섹션으로 구성. 무료 템플릿은 Copy 버튼으로 프롬프트를 바로 복사 가능</td></tr>
+          <tr><td>02 · 템플릿 고르고 프롬프트 복사</td><td>상단 내비게이션 "Sections" 클릭 → Pricing 필터에서 Free 선택 → 템플릿 클릭해 미리보기(톤이 맞는지, 모바일에서도 무난한지 확인) → Copy 클릭 → 메모 앱에 안전하게 붙여넣기. 15분 넘게 고르지 말고 80%만 맞아도 진행</td></tr>
+          <tr><td>03 · Claude Code로 식스샵프로용 코드 만들기</td><td>Next.js가 아니라 식스샵 프로의 커스텀 코드 블록(HTML/CSS/JS)에 바로 올릴 수 있는 형태로 요청 — 아래 "프롬프트 01 · 빌드" 사용. 라이브러리가 충돌하면 "CDN 버전으로 바꿔줘"라고 요청</td></tr>
+          <tr><td>04 · 내 것으로 만들기</td><td>브랜드명·태그라인·소개 문장을 미리 메모해두고 "프롬프트 02 · 개인화"로 전달. 이미지는 식스샵이 로컬 파일시스템이 아니라 에디터 업로드 구조이므로, img src를 URL 변수로 비워두고 나중에 식스샵 미디어 라이브러리에서 교체</td></tr>
+          <tr><td>05 · 바이브 코딩으로 다듬고 고치기</td><td>깨진 섹션은 스크린샷 첨부 후 "프롬프트 03 · 수정"으로 요청. 간단한 미세 수정(버튼 색상, 간격)은 식스샵 에디터 안 블록 AI에게 자연어로 바로 지시. 모션 추가·모바일 반응형도 각각 전용 프롬프트로 요청하고, 반영 전 모바일을 꼭 확인</td></tr>
+          <tr><td>06 · 식스샵 프로 MCP로 반영 + 도메인 연결</td><td>claude.ai 커넥터 설정에서 식스샵 프로 MCP 연결 → "프롬프트 04 · 반영"으로 블록을 만들어 페이지에 삽입 요청 → 관리자/미리보기 링크로 확인 → 게시 요청. 도메인은 식스샵 프로 관리자 → 도메인 메뉴에서 구매·연결(선택)</td></tr>
+        </table>
+
+        <h4>참고 · 프롬프트 4개 한눈에 보기</h4>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>프롬프트 01 · 빌드</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>이걸 식스샵프로에 그대로 넣을 수 있는 커스텀 코드 블록으로 만들어줘. 순수 HTML+CSS+바닐라 JS로만 구성하고, 외부 빌드 도구는 쓰지 마. 애니메이션은 그대로 유지해줘. 여기 프롬프트야: [motionsites 프롬프트 붙여넣기]</code></pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>프롬프트 02 · 개인화</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>내 것으로 만들어줘 — 브랜드: [이름], 태그라인: [태그라인]. 모든 플레이스홀더를 실제 카피로 교체해줘. 이미지는 빈 URL 변수로 놓아줘, 나중에 식스샵에서 직접 바꿀거야. 레이아웃과 애니메이션은 유지하고 콘텐츠만 바꿔줘.</code></pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>프롬프트 03 · 수정</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>여기 깨져 보이는 섹션 스크린샷이야 [첨부]. 간격과 정렬을 고쳐줘. 순수 CSS로만.</code></pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-block-head"><span>프롬프트 04 · 반영</span><button type="button" class="copy-btn">복사</button></div>
+          <pre><code>이 코드를 블록으로 만들어서 내 식스샵프로 사이트의 [페이지명]에 추가해줘.</code></pre>
+        </div>
+
+        <h4>진짜 도움이 되는 팁</h4>
+        <ul>
+          <li>언제나 "순수 HTML/CSS/JS, 외부 빌드 도구 없이"를 명시하세요. motionsites 프롬프트만 넣으면 기본값으로 Next.js/React 구조를 잡을 수 있습니다</li>
+          <li>포인트 컬러 1개 + 폰트 조합 1개 = 즉시 프리미엄. 정확한 hex 코드와 폰트명을 지정하세요</li>
+          <li>이미지는 변수로 비워두고 식스샵 에디터에서 교체하세요</li>
+          <li>반영 전에 모바일을 꼭 확인하세요</li>
+          <li>작은 수정은 식스샵 블록 AI에게, 큰 구조 변경은 Claude Code에게</li>
+          <li>새로 식스샵 프로를 시작하는 거라면 Sites로, 기존 운영 중인 홈페이지에 넣는다면 Sections로 다운로드하세요</li>
+        </ul>
+        <div class="callout">총 비용: 식스샵 프로 이용료와 별도 도메인 비용 외에는 추가 비용 없음(MCP 무료 개방). 별도의 GitHub/Vercel 계정이나 빌드 과정이 필요 없습니다.</div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a10" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a11" data-step-id="a11">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">11</span>
+        <button class="step-status" data-status-for="a11" type="button"></button>
+        <span class="step-title">레퍼런스 리서치</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>레퍼런스를 많이 보는 만큼 감각이 늘어납니다. 아래 사이트들을 정기적으로 둘러보면서 좋았던 디자인을 저장해두세요.</p>
+        <div class="external-link-list">
+          <a href="https://www.gdweb.co.kr/main/" target="_blank" rel="noopener">GDWEB →</a>
+          <a href="https://www.awwwards.com/" target="_blank" rel="noopener">Awwwards →</a>
+          <a href="https://imweb.me/best_production_list" target="_blank" rel="noopener">아임웹 제작사례 →</a>
+          <a href="https://www.sixshop.com/examples" target="_blank" rel="noopener">식스샵 제작사례 →</a>
+          <a href="https://www.relume.io/" target="_blank" rel="noopener">Relume (기획용 AI 툴) →</a>
+        </div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a11" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a12" data-step-id="a12">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">12</span>
+        <button class="step-status" data-status-for="a12" type="button"></button>
+        <span class="step-title">실력 증명용 샘플 홈페이지 제작</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>앞서 배운 웹빌더 기초와 클로드 코딩 실습(FAB·탭메뉴·카운트업·스크롤 줌인)을 모두 활용해서, 실제로 보여줄 수 있는 샘플 홈페이지 1개를 완성하세요. 완벽할 필요는 없습니다 — 이 샘플이 Stage B(고객 만나는 단계)에서 타겟에게 보여줄 포트폴리오가 됩니다.</p>
+        <div class="callout">이 단계의 목표는 "완성"이 아니라 "보여줄 수 있는 것"입니다. 업종 하나를 정해서 그 업종에 맞는 샘플로 만들어두면, Stage B의 타겟 좁히기·오퍼 설계 단계에서 그대로 재사용할 수 있습니다.</div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a12" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a13" data-step-id="a13">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">13</span>
+        <button class="step-status" data-status-for="a13" type="button"></button>
+        <span class="step-title">파스비코나 구조로 서비스 소개자료 준비</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>설득형 상세페이지·세일즈 콘텐츠의 핵심 프레임워크인 파스비코나(PASBICONA) 구조로, 내 서비스 소개자료를 준비하는 단계입니다. 팔리는 페이지에는 구조가 있습니다 — 감정 → 공감 → 해결 → 신뢰 → 행동의 단계로 설계해야 합니다.</p>
+
+        <h4>파스비코나 9단계 개요</h4>
+        <table>
+          <tr><th>단계</th><th>의미</th><th>역할</th></tr>
+          <tr><td>P – Problem (문제)</td><td>고객의 문제는 무엇인가?</td><td>공감 시작, 불편함 인식</td></tr>
+          <tr><td>A – Affinity (공감)</td><td>나도 같은 경험이 있는가?</td><td>관계·신뢰 형성</td></tr>
+          <tr><td>S – Solution (해결)</td><td>어떤 해결책을 제시하는가?</td><td>명확한 제안</td></tr>
+          <tr><td>B – Benefit (이익)</td><td>고객은 어떤 변화를 얻게 되는가?</td><td>결과·가치 강조</td></tr>
+          <tr><td>E – Evidence (증거)</td><td>그 결과는 증명 가능한가?</td><td>후기·사례·데이터</td></tr>
+          <tr><td>C – Contents (구성)</td><td>무엇을, 어떻게 제공하나?</td><td>프로그램·커리큘럼·서비스 내용</td></tr>
+          <tr><td>O – Offer (제안)</td><td>지금 선택해야 하는 이유는?</td><td>혜택·한정성·보너스</td></tr>
+          <tr><td>N – Narrow (대상 한정)</td><td>누구에게 맞고, 맞지 않는가?</td><td>타깃 명확화</td></tr>
+          <tr><td>A – Action (행동 유도)</td><td>지금 무엇을 해야 하는가?</td><td>CTA 버튼, 신청 안내</td></tr>
+        </table>
+
+        <h4>구조 흐름 요약</h4>
+        <p>공감 → 연결 → 해결 → 결과 → 증거 → 구성 → 제안 → 한정 → 행동</p>
+        <ul>
+          <li>상단 (P~S): 문제·공감·해결의 감정선</li>
+          <li>중단 (B~C): 가치·증거·구성의 신뢰선</li>
+          <li>하단 (O~A): 제안·한정·행동의 전환선</li>
+        </ul>
+
+        <h4>상세페이지 적용 예시</h4>
+        <ul>
+          <li>Hero 구간 → <strong>Problem</strong>: 예: "홈페이지를 만들어도 문의가 오지 않나요?"</li>
+          <li>스토리 구간 → <strong>Affinity + Solution</strong>: 예: "저도 같은 문제를 겪었지만, 구조를 바꾸자 달라졌어요."</li>
+          <li>본문 구간 → <strong>Benefit + Evidence + Contents</strong>: 예: "3단계 템플릿으로 전환율이 3배 상승했습니다."</li>
+          <li>제안 구간 → <strong>Offer + Narrow</strong>: 예: "이번 기수 10명 한정, 브랜딩 관심 있는 분만 신청"</li>
+          <li>CTA 구간 → <strong>Action</strong>: 예: "지금 무료 상담 신청하기 →"</li>
+        </ul>
+
+        <h4>활용 영역</h4>
+        <p>상세페이지 기획 / 서비스 제안서·강의 소개문 / 이메일 마케팅·SNS 콘텐츠 / 세일즈 웨비나·랜딩페이지 설계</p>
+
+        <h4>실습 과제</h4>
+        <ol>
+          <li>내 고객의 가장 큰 문제(P) 한 줄로 쓰기</li>
+          <li>나의 경험 중 공감되는 사례(A) 정리</li>
+          <li>내가 제시할 해결 솔루션(S) 한 문장 완성</li>
+          <li>PAS 세 문장으로 시작문단 구성</li>
+        </ol>
+
+        <div class="callout">핵심 메시지: "팔리는 페이지는 문장보다 흐름이 중요하다. 파스비코나는 그 흐름을 시각적으로 정리해주는 설계지도다."</div>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a13" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+
+    <section class="step" id="a14" data-step-id="a14">
+      <button class="step-head" type="button" aria-expanded="false">
+        <span class="step-num">14</span>
+        <button class="step-status" data-status-for="a14" type="button"></button>
+        <span class="step-title">SNS 계정 셋업</span>
+        <span class="step-chevron">&#8964;</span>
+      </button>
+      <div class="step-body"><div class="step-body-inner"><div class="step-body-content">
+
+        <p>Stage A의 마지막 단계입니다. 활동할 SNS 계정(인스타그램 등)에 프로필 사진을 등록하고 소개글을 작성하세요. 완벽하지 않아도 괜찮습니다 — 일단 만들어두고 Stage B에서 타겟에게 다가가면서 차차 다듬으면 됩니다.</p>
+
+        <div class="notes-block">
+          <label class="notes-label">📝 내 자료 / 메모</label>
+          <textarea class="notes-input" data-notes-for="a14" placeholder="이 단계에서 모은 자료, 링크, 메모를 적어두세요"></textarea>
+        </div>
+
+      </div></div></div>
+    </section>
+  </div>
+
+  <hr class="divider" />
+  <div style="display:flex; justify-content:space-between; font-size:13.5px;">
+    <span></span><a href="stage-b-leads.html" style="color:var(--accent);">다음: 고객 만나는 단계 &rarr;</a>
+  </div>
+</div>
+
+<script src="journey-shared.js"></script>
+</body>
+</html>
