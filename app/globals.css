@@ -28,36 +28,6 @@ html {
   scroll-behavior: smooth;
 }
 
-@keyframes blob-drift-a {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(40px, 30px);
-  }
-}
-
-@keyframes blob-drift-b {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-30px, -20px);
-  }
-}
-
-@keyframes ribbon-glow {
-  0%,
-  100% {
-    opacity: 0.85;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--text-primary);
