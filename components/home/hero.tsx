@@ -2,12 +2,20 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { UnicornScene } from "@/components/home/unicorn-scene";
+import { HologramScene } from "@/components/home/hologram-scene";
 
 export function Hero() {
   return (
     <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-accent-strong">
-      <UnicornScene />
+      <div
+        aria-hidden="true"
+        className="absolute -left-40 top-[-20%] h-[560px] w-[560px] rounded-full bg-accent/60 blur-[110px] [animation:blob-drift-a_18s_ease-in-out_infinite]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute -right-32 bottom-[-25%] h-[520px] w-[520px] rounded-full bg-sky-400/30 blur-[120px] [animation:blob-drift-b_20s_ease-in-out_infinite]"
+      />
+      <HologramScene />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.08),transparent_45%)]" />
       <div className="absolute inset-0 bg-black/30" />
 
