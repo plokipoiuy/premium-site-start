@@ -36,8 +36,10 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [indicator, setIndicator] = useState<{ left: number; width: number } | null>(null);
+  const [panelOffset, setPanelOffset] = useState(0);
   const navRefs = useRef<Array<HTMLDivElement | null>>([]);
   const navContainerRef = useRef<HTMLDivElement | null>(null);
+  const headerRef = useRef<HTMLElement | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -50,10 +52,13 @@ export function SiteHeader() {
   const focusItem = (index: number) => {
     const el = navRefs.current[index];
     const container = navContainerRef.current;
-    if (!el || !container) return;
+    const header = headerRef.current;
+    if (!el || !container || !header) return;
     const elRect = el.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
+    const headerRect = header.getBoundingClientRect();
     setIndicator({ left: elRect.left - containerRect.left, width: elRect.width });
+    setPanelOffset(elRect.left - headerRect.left);
     setActiveIndex(index);
   };
 
@@ -63,6 +68,9 @@ export function SiteHeader() {
 
   return (
     <header
+      ref={(el) => {
+        headerRef.current = el;
+      }}
       onMouseLeave={closeMenu}
       className={`sticky top-0 z-50 w-full border-b transition-colors duration-300 ${
         scrolled || activeIndex !== null
@@ -154,7 +162,7 @@ export function SiteHeader() {
             style={{ transformOrigin: "top" }}
             className="absolute inset-x-0 top-full hidden border-b border-line bg-surface shadow-[0_24px_48px_-24px_rgba(10,15,25,0.18)] md:block"
           >
-            <motion.div layout className="mx-auto max-w-7xl px-5 py-8 sm:px-8">
+            <motion.div layout className="py-8" style={{ paddingLeft: panelOffset, paddingRight: 24 }}>
               <motion.div
                 key={activeIndex}
                 variants={listVariants}
@@ -190,8 +198,12 @@ export function SiteHeader() {
             <ul className="flex flex-col px-5 py-2">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href} className="border-b border-line/70 last:border-none">
-                  <Link href={item.href} onClick={() => setOpen(false)} className="block py-4">
-                    <span className="block text-[15px] font-medium text-text-primary">
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="group block rounded-lg px-3 py-4 transition-colors hover:bg-accent-soft active:bg-accent-soft"
+                  >
+                    <span className="block text-[15px] font-medium text-text-primary transition-colors group-hover:text-accent">
                       {item.label}
                     </span>
                     <span className="mt-0.5 block text-[12px] text-text-muted">{item.desc}</span>
