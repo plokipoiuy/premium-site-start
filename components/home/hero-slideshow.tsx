@@ -4,12 +4,19 @@ import { useEffect, useState } from "react";
 
 const SLIDE_INTERVAL_MS = 6000;
 
-// TODO: 실제 사진이 오면 /public에 넣고 src를 채워주세요 (예: "/hero-1.jpg").
-// src가 없는 동안은 임시 그라디언트로 대체됩니다.
 const SLIDES = [
-  { src: null as string | null, fallback: "linear-gradient(135deg, #1a5aa8, #0b2d63)" },
-  { src: null as string | null, fallback: "linear-gradient(135deg, #14448c, #071c42)" },
-  { src: null as string | null, fallback: "linear-gradient(135deg, #0b2d63, #1c3f7a)" },
+  {
+    src: "https://cdn.imweb.me/thumbnail/20260811/709be9331ae49.png",
+    fallback: "linear-gradient(135deg, #1a5aa8, #0b2d63)",
+  },
+  {
+    src: "https://cdn.imweb.me/thumbnail/20260811/c2147be37120b.png",
+    fallback: "linear-gradient(135deg, #14448c, #071c42)",
+  },
+  {
+    src: "https://cdn.imweb.me/thumbnail/20260811/bad2a8f46f384.png",
+    fallback: "linear-gradient(135deg, #0b2d63, #1c3f7a)",
+  },
 ];
 
 export function HeroSlideshow() {
