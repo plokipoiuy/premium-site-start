@@ -90,13 +90,13 @@ export function PortfolioSection() {
         </Reveal>
 
         {/* 추가 포트폴리오 카드 */}
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-6">
+        <div className="mt-10 grid grid-cols-1 gap-5 overflow-x-hidden sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-6">
           {filtered.map((item, i) => (
             <motion.button
               key={item.id}
               type="button"
               onClick={() => setActiveCase(item)}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -24 : 24 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -16 : 16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, ease: "easeOut", delay: (i % 3) * 0.1 }}

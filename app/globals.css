@@ -40,6 +40,10 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  /* 스크롤 등장 애니메이션(좌우 이동)이 아이폰 사파리에서 순간적으로 옆으로
+     튕기는 고무줄 효과를 만드는 것을 막는다 */
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -47,6 +51,9 @@ body {
   color: #202824;
   font-family: var(--font-pretendard);
   overflow-x: hidden;
+  overscroll-behavior-x: none;
+  width: 100%;
+  position: relative;
 }
 
 ::selection {

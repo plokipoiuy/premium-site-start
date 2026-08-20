@@ -38,7 +38,7 @@ export function HeroSlider() {
       id="top"
       aria-roledescription="carousel"
       aria-label="그린하우스 소개 슬라이드"
-      className="relative h-[90vh] min-h-[560px] w-full overflow-hidden bg-deep-green"
+      className="relative h-[90svh] min-h-[560px] w-full overflow-hidden bg-deep-green"
     >
       <AnimatePresence mode="sync">
         <motion.div
