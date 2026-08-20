@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 자체 호스팅 Pretendard — 본문 400 / 강조 700 두 가지 굵기만 사용 */
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Bold.woff2") format("woff2");
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-pretendard: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #f8f6f0;
+  color: #202824;
+  font-family: var(--font-pretendard);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #ef6f8d;
+  color: #ffffff;
+}
+
+/* Visible keyboard focus ring across the site */
+:focus-visible {
+  outline: 2px solid #285c4d;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container-content {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 1024px) {
+  .container-content {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.section-padding {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+/* thin scrollbar for horizontal filter tabs etc */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #e5e9e6;
+  border-radius: 4px;
+}
