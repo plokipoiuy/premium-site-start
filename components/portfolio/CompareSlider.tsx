@@ -57,17 +57,19 @@ export function CompareSlider({ beforeAlt, afterAlt, className = "" }: CompareSl
     >
       <div className="absolute inset-0">
         <PlaceholderImage alt={beforeAlt} variant="ivory" className="h-full w-full" />
-        <span className="absolute left-4 top-4 rounded-full bg-text-charcoal/70 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-          Before
-        </span>
       </div>
 
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
         <PlaceholderImage alt={afterAlt} variant="sage" className="h-full w-full" />
-        <span className="absolute right-4 top-4 rounded-full bg-deep-green/85 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-          After
-        </span>
       </div>
+
+      {/* 라벨은 잘리는 사진과 분리해 항상 같은 자리에 보이도록 고정 */}
+      <span className="pointer-events-none absolute left-4 top-4 z-10 rounded-full bg-text-charcoal/70 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+        Before
+      </span>
+      <span className="pointer-events-none absolute right-4 top-4 z-10 rounded-full bg-deep-green/85 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+        After
+      </span>
 
       <div
         role="slider"
