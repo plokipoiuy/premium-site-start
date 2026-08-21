@@ -60,8 +60,9 @@ export type Testimonial = {
   isPlaceholder: true;
 };
 
-// 실제 후기 등록 전, 디자인 미리보기 용도로만 사용하는 샘플 후기 1건
+// 실제 후기 등록 전, 디자인 미리보기 용도로만 사용하는 샘플 후기
 export type SampleReview = {
+  id: string;
   maskedName: string;
   serviceType: string;
   rating: number;
