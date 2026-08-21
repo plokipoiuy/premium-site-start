@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { heroSlides } from "@/lib/data/hero";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { Button } from "@/components/ui/Button";
 import { useQuoteModal } from "@/components/quote/QuoteModalContext";
 
@@ -55,7 +55,14 @@ export function HeroSlider() {
             transition={{ duration: SLIDE_DURATION / 1000 + 1, ease: "linear" }}
             className="absolute inset-0"
           >
-            <PlaceholderImage alt={slide.imageAlt} variant="sage" className="h-full w-full" />
+            <Image
+              src={slide.image}
+              alt={slide.imageAlt}
+              fill
+              sizes="100vw"
+              priority={index === 0}
+              className="object-cover"
+            />
           </motion.div>
           <div
             className="absolute inset-0"

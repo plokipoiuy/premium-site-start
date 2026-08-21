@@ -8,6 +8,7 @@ export type HeroSlide = {
   eyebrow: string;
   title: string;
   description: string;
+  image: string;
   imageAlt: string;
   gradientFrom: string;
 };
