@@ -28,6 +28,7 @@ export const portfolioCases: PortfolioCase[] = [
     duration: "약 3시간",
     scope: ["기름때 제거", "싱크대 및 수전 세척", "상부장·하부장 내부 정리"],
     isSample: true,
+    image: "/images/portfolio/case-1.png",
   },
   {
     id: "case-2",
@@ -40,6 +41,7 @@ export const portfolioCases: PortfolioCase[] = [
     duration: "약 2시간",
     scope: ["타일 줄눈 세척", "곰팡이 제거", "배수구 위생 관리"],
     isSample: true,
+    image: "/images/portfolio/case-2.png",
   },
   {
     id: "case-3",
@@ -52,6 +54,7 @@ export const portfolioCases: PortfolioCase[] = [
     duration: "약 1시간 30분",
     scope: ["창틀 먼지 및 이물질 제거", "방충망 세척", "새시 틈새 정리"],
     isSample: true,
+    image: "/images/portfolio/case-3.png",
   },
   {
     id: "case-4",
@@ -64,6 +67,7 @@ export const portfolioCases: PortfolioCase[] = [
     duration: "약 5시간",
     scope: ["바닥 왁싱", "걸레받이 세척", "전체 먼지 제거"],
     isSample: true,
+    image: "/images/portfolio/case-4.png",
   },
   {
     id: "case-5",
@@ -76,6 +80,7 @@ export const portfolioCases: PortfolioCase[] = [
     duration: "약 1시간",
     scope: ["바닥 물청소", "배수구 정리", "창틀 및 난간 세척"],
     isSample: true,
+    image: "/images/portfolio/case-5.png",
   },
   {
     id: "case-6",
@@ -88,5 +93,6 @@ export const portfolioCases: PortfolioCase[] = [
     duration: "약 3시간 30분",
     scope: ["레인지후드 분해 세척", "타일 및 줄눈 관리", "수납장 내외부 청소"],
     isSample: true,
+    image: "/images/portfolio/case-6.png",
   },
 ];

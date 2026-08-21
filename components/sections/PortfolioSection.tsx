@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { MapPin, Ruler, Users2, Clock } from "lucide-react";
 import { featuredCase, portfolioCases } from "@/lib/data/portfolio";
@@ -112,12 +113,22 @@ export function PortfolioSection() {
               transition={{ duration: 0.7, ease: "easeOut", delay: (i % 3) * 0.1 }}
               className="group overflow-hidden rounded-card bg-white text-left shadow-soft transition-shadow hover:shadow-card focus-visible:outline-deep-green"
             >
-              <div className="aspect-[4/3] overflow-hidden">
-                <PlaceholderImage
-                  alt={`${item.title} 전후 비교 (샘플 이미지)`}
-                  variant="sage"
-                  className="h-full w-full transition-transform duration-500 group-hover:scale-105"
-                />
+              <div className="relative aspect-[4/3] overflow-hidden">
+                {item.image ? (
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <PlaceholderImage
+                    alt={`${item.title} 전후 비교 (샘플 이미지)`}
+                    variant="sage"
+                    className="h-full w-full transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
               </div>
               <div className="p-5">
                 <span className="text-xs font-semibold uppercase tracking-wide text-coral-pink">
@@ -136,10 +147,23 @@ export function PortfolioSection() {
       <Modal isOpen={!!activeCase} onClose={() => setActiveCase(null)} title={activeCase?.title ?? ""}>
         {activeCase && (
           <div className="flex flex-col gap-6">
-            <CompareSlider
-              beforeAlt={`${activeCase.title} - 청소 전 (샘플 이미지)`}
-              afterAlt={`${activeCase.title} - 청소 후 (샘플 이미지)`}
-            />
+            {activeCase.beforeImage && activeCase.afterImage ? (
+              <CompareSlider
+                beforeAlt={`${activeCase.title} - 청소 전`}
+                afterAlt={`${activeCase.title} - 청소 후`}
+                beforeImage={activeCase.beforeImage}
+                afterImage={activeCase.afterImage}
+              />
+            ) : activeCase.image ? (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card lg:aspect-[16/10]">
+                <Image src={activeCase.image} alt={activeCase.title} fill sizes="100vw" className="object-cover" />
+              </div>
+            ) : (
+              <CompareSlider
+                beforeAlt={`${activeCase.title} - 청소 전 (샘플 이미지)`}
+                afterAlt={`${activeCase.title} - 청소 후 (샘플 이미지)`}
+              />
+            )}
             <div className="grid grid-cols-2 gap-3">
               <InfoRow icon={MapPin} label={activeCase.region} />
               <InfoRow icon={Ruler} label={activeCase.pyeong} />

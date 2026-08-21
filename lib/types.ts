@@ -50,6 +50,7 @@ export type PortfolioCase = {
   duration: string;
   scope: string[];
   isSample: boolean;
+  image?: string;
   beforeImage?: string;
   afterImage?: string;
 };
