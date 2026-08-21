@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vibrant Wellness — Heal Your Body Naturally</title>
+
+<!-- Google Fonts: Inter 300/400/500/600/700 -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  /* ---------- Reset ---------- */
+  .vw-hero, .vw-hero * { box-sizing: border-box; margin: 0; padding: 0; }
+  .vw-hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: #0a0a0a;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #fff;
+  }
+  .vw-hero button { font-family: inherit; cursor: pointer; }
+  .vw-hero a { text-decoration: none; color: inherit; }
+  .vw-hero ul { list-style: none; }
+
+  /* ---------- Background video + overlay ---------- */
+  .vw-bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .vw-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  /* ---------- Liquid glass ---------- */
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    background-blend-mode: luminosity;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .liquid-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.15) 80%,
+      rgba(255, 255, 255, 0.45) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ---------- Content wrapper ---------- */
+  .vw-content-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* ---------- Nav ---------- */
+  .vw-nav {
+    position: relative;
+    z-index: 20;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 20px 0;
+  }
+  @media (min-width: 640px) { .vw-nav { padding: 32px 32px 0; } }
+  @media (min-width: 768px) { .vw-nav { padding: 32px 64px 0; } }
+  @media (min-width: 1024px) { .vw-nav { padding: 32px 80px 0; } }
+
+  .vw-logo svg { display: block; width: 32px; height: 32px; fill: #fff; }
+  @media (min-width: 768px) { .vw-logo svg { width: 36px; height: 36px; } }
+
+  .vw-nav-pill {
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    transform: translateX(-50%);
+    display: none;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 9999px;
+    padding: 12px 32px;
+  }
+  @media (min-width: 640px) { .vw-nav-pill { top: 32px; } }
+  @media (min-width: 768px) { .vw-nav-pill { display: flex; } }
+
+  .vw-nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fff;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+  }
+  .vw-nav-link:hover, .vw-nav-link.is-active { opacity: 1; }
+
+  .vw-nav-avatar {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 9999px;
+    border: none;
+    background: none;
+  }
+  @media (min-width: 768px) { .vw-nav-avatar { display: flex; } }
+  .vw-nav-avatar svg { width: 20px; height: 20px; color: rgba(255,255,255,0.8); }
+
+  .vw-menu-btn {
+    position: relative;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 9999px;
+    border: none;
+    background: none;
+  }
+  @media (min-width: 768px) { .vw-menu-btn { display: none; } }
+  .vw-menu-btn .vw-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    opacity: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .vw-menu-btn .vw-icon-close { transform: translate(-50%, -50%) rotate(90deg) scale(0); opacity: 0; }
+  .vw-menu-btn.is-open .vw-icon-menu { transform: translate(-50%, -50%) rotate(-90deg) scale(0); opacity: 0; }
+  .vw-menu-btn.is-open .vw-icon-close { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 1; }
+
+  /* ---------- Mobile menu overlay ---------- */
+  .vw-mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-out;
+  }
+  @media (min-width: 768px) { .vw-mobile-menu { display: none; } }
+  .vw-mobile-menu.is-open { opacity: 1; pointer-events: auto; }
+
+  .vw-mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    transform: translateY(-2rem);
+    transition: transform 0.5s ease-out;
+  }
+  .vw-mobile-menu.is-open .vw-mobile-menu-content { transform: translateY(0); }
+
+  .vw-mobile-link { font-size: 1.5rem; font-weight: 500; color: #fff; }
+  .vw-mobile-account { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
+  .vw-mobile-avatar {
+    display: flex; align-items: center; justify-content: center;
+    height: 40px; width: 40px; border-radius: 9999px;
+  }
+  .vw-mobile-avatar svg { width: 20px; height: 20px; color: rgba(255,255,255,0.8); }
+  .vw-mobile-account span { font-size: 0.875rem; font-weight: 300; color: rgba(255,255,255,0.6); }
+
+  /* ---------- Main content ---------- */
+  .vw-main {
+    position: relative;
+    z-index: 10;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 20px 32px;
+    transition: opacity 0.3s ease;
+  }
+  @media (min-width: 640px) { .vw-main { padding: 0 32px 40px; } }
+  @media (min-width: 768px) { .vw-main { padding: 0 64px 56px; } }
+  @media (min-width: 1024px) { .vw-main { padding: 0 80px 56px; } }
+  .vw-main.is-hidden { opacity: 0; pointer-events: none; }
+
+  .vw-top-block { margin-top: 56px; max-width: 42rem; }
+  @media (min-width: 640px) { .vw-top-block { margin-top: 80px; } }
+  @media (min-width: 768px) { .vw-top-block { margin-top: 112px; } }
+
+  /* Badge */
+  .vw-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 9999px;
+    padding: 6px 12px;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 640px) { .vw-badge { gap: 0.75rem; padding: 8px 16px; margin-bottom: 24px; } }
+
+  .vw-avatars { display: flex; }
+  .vw-avatars img {
+    height: 20px; width: 20px;
+    border-radius: 9999px;
+    border: 2px solid rgba(255,255,255,0.2);
+    object-fit: cover;
+    margin-left: -8px;
+  }
+  .vw-avatars img:first-child { margin-left: 0; }
+  @media (min-width: 640px) { .vw-avatars img { height: 24px; width: 24px; } }
+
+  .vw-badge span { font-size: 0.75rem; font-weight: 300; color: rgba(255,255,255,0.8); }
+  @media (min-width: 640px) { .vw-badge span { font-size: 0.875rem; } }
+
+  /* Headline */
+  .vw-headline {
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1.05;
+    color: #fff;
+    letter-spacing: -0.05em;
+  }
+  @media (min-width: 640px) { .vw-headline { font-size: 3rem; } }
+  @media (min-width: 768px) { .vw-headline { font-size: 3.75rem; } }
+  @media (min-width: 1024px) { .vw-headline { font-size: 4.5rem; } }
+  .vw-headline .vw-word { display: inline-block; }
+
+  .vw-subtitle {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+  }
+  @media (min-width: 640px) { .vw-subtitle { margin-top: 1.25rem; font-size: 1rem; } }
+  @media (min-width: 768px) { .vw-subtitle { font-size: 1.125rem; } }
+
+  .vw-cta {
+    display: inline-block;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    margin-top: 24px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  .vw-cta:hover { background-color: rgba(255,255,255,0.1); }
+  @media (min-width: 640px) { .vw-cta { padding: 14px 28px; margin-top: 32px; } }
+
+  /* Stats */
+  .vw-stats { display: flex; align-items: flex-end; gap: 24px; }
+  @media (min-width: 640px) { .vw-stats { gap: 40px; } }
+  @media (min-width: 768px) { .vw-stats { gap: 64px; } }
+
+  .vw-stat-icon { position: relative; width: 20px; height: 20px; margin-bottom: 10px; }
+  .vw-stat-icon .dot {
+    position: absolute;
+    width: 2.5px; height: 2.5px;
+    background: rgba(255,255,255,0.6);
+  }
+
+  .vw-grid-icon {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    width: 20px; height: 20px;
+    margin-bottom: 10px;
+  }
+  .vw-grid-icon span { width: 4px; height: 4px; border-radius: 2px; }
+  .vw-grid-icon span.on { background: rgba(255,255,255,0.6); }
+  .vw-grid-icon span.off { background: rgba(255,255,255,0); }
+
+  .vw-stat-value { font-size: 1.25rem; font-weight: 400; color: #fff; }
+  @media (min-width: 640px) { .vw-stat-value { font-size: 1.5rem; } }
+  @media (min-width: 768px) { .vw-stat-value { font-size: 1.875rem; } }
+
+  .vw-stat-label { font-size: 0.75rem; font-weight: 300; color: rgba(255,255,255,0.6); }
+  @media (min-width: 640px) { .vw-stat-label { font-size: 0.875rem; } }
+</style>
+</head>
+<body>
+
+<section class="vw-hero">
+  <video class="vw-bg-video" autoplay loop muted playsinline>
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260715_082433_69699cf8-444b-4484-93cc-053e57896dfd.mp4" type="video/mp4" />
+  </video>
+  <div class="vw-overlay"></div>
+
+  <div class="vw-content-wrap">
+
+    <!-- Nav -->
+    <nav class="vw-nav">
+      <a href="#" class="vw-logo" aria-label="Vibrant Wellness home">
+        <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 128 128 C 198.692 128 256 185.308 256 256 L 151.883 256 C 149.812 220.307 120.213 192 84 192 C 47.787 192 18.188 220.307 16.117 256 L 0 256 C 0 185.308 57.308 128 128 128 Z M 104.117 0 C 106.188 35.694 135.787 64 172 64 C 208.213 64 237.812 35.694 239.883 0 L 256 0 C 256 70.692 198.692 128 128 128 C 57.308 128 0 70.692 0 0 Z" />
+        </svg>
+      </a>
+
+      <div class="vw-nav-pill liquid-glass">
+        <a href="#" class="vw-nav-link is-active">Home</a>
+        <a href="#" class="vw-nav-link">Our Approach</a>
+        <a href="#" class="vw-nav-link">Healing Methods</a>
+      </div>
+
+      <button type="button" class="vw-nav-avatar liquid-glass" aria-label="Account">
+        <i data-lucide="circle-user-round"></i>
+      </button>
+
+      <button type="button" class="vw-menu-btn liquid-glass" id="vwMenuBtn" aria-label="Toggle menu" aria-expanded="false">
+        <i data-lucide="menu" class="vw-icon vw-icon-menu"></i>
+        <i data-lucide="x" class="vw-icon vw-icon-close"></i>
+      </button>
+    </nav>
+
+    <!-- Mobile menu overlay -->
+    <div class="vw-mobile-menu" id="vwMobileMenu">
+      <div class="vw-mobile-menu-content">
+        <a href="#" class="vw-mobile-link vw-mobile-link-item">Home</a>
+        <a href="#" class="vw-mobile-link vw-mobile-link-item">Our Approach</a>
+        <a href="#" class="vw-mobile-link vw-mobile-link-item">Healing Methods</a>
+        <div class="vw-mobile-account">
+          <div class="vw-mobile-avatar liquid-glass">
+            <i data-lucide="circle-user-round"></i>
+          </div>
+          <span>Account</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="vw-main" id="vwMain">
+      <div class="vw-top-block">
+        <div class="vw-badge liquid-glass">
+          <div class="vw-avatars">
+            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100" alt="" loading="lazy" />
+            <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100" alt="" loading="lazy" />
+            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" alt="" loading="lazy" />
+            <img src="https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=100" alt="" loading="lazy" />
+          </div>
+          <span>our path to natural wellness</span>
+        </div>
+
+        <h1 class="vw-headline">
+          <span class="vw-word">Heal</span> <span class="vw-word">Your</span> <span class="vw-word">Body</span><br />
+          <span class="vw-word">Naturally</span>
+        </h1>
+
+        <p class="vw-subtitle">Holistic wellness. Transformative results.</p>
+
+        <button type="button" class="vw-cta liquid-glass">Begin Your Journey</button>
+      </div>
+
+      <div class="vw-stats">
+        <div class="vw-stat">
+          <div class="vw-stat-icon">
+            <span class="dot" style="left:8.75px; top:2px;"></span>
+            <span class="dot" style="left:5.25px; top:9px;"></span>
+            <span class="dot" style="left:12.25px; top:9px;"></span>
+            <span class="dot" style="left:1.75px; top:16px;"></span>
+            <span class="dot" style="left:8.75px; top:16px;"></span>
+            <span class="dot" style="left:15.75px; top:16px;"></span>
+          </div>
+          <div class="vw-stat-value">48 Hours</div>
+          <div class="vw-stat-label">Initial Consultation</div>
+        </div>
+        <div class="vw-stat">
+          <div class="vw-grid-icon">
+            <span class="on"></span><span class="off"></span><span class="on"></span>
+            <span class="off"></span><span class="on"></span><span class="off"></span>
+            <span class="on"></span><span class="off"></span><span class="on"></span>
+          </div>
+          <div class="vw-stat-value">Initial Consultation</div>
+          <div class="vw-stat-label">Healing Sessions</div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+</section>
+
+<!-- Lucide icons (CDN, no bundler) -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- GSAP (CDN, no bundler) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script>
+  (function () {
+    if (window.lucide) { lucide.createIcons(); }
+
+    var menuBtn = document.getElementById("vwMenuBtn");
+    var mobileMenu = document.getElementById("vwMobileMenu");
+    var mainContent = document.getElementById("vwMain");
+    var menuOpen = false;
+
+    function setMenu(open) {
+      menuOpen = open;
+      menuBtn.classList.toggle("is-open", open);
+      mobileMenu.classList.toggle("is-open", open);
+      mainContent.classList.toggle("is-hidden", open);
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    menuBtn.addEventListener("click", function () { setMenu(!menuOpen); });
+
+    document.querySelectorAll(".vw-mobile-link-item").forEach(function (link) {
+      link.addEventListener("click", function () { setMenu(false); });
+    });
+
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (window.gsap && !reduceMotion) {
+      var tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+      tl.from(".vw-badge", { opacity: 0, y: 24, duration: 0.7 })
+        .from(".vw-headline .vw-word", { opacity: 0, y: 24, duration: 0.7, stagger: 0.08 }, "-=0.5")
+        .from(".vw-subtitle", { opacity: 0, y: 24, duration: 0.7 }, "-=0.4")
+        .from(".vw-cta", { opacity: 0, y: 24, duration: 0.7 }, "-=0.4")
+        .from(".vw-stat", { opacity: 0, y: 24, duration: 0.7, stagger: 0.1 }, "-=0.3");
+    }
+  })();
+</script>
+
+</body>
+</html>
