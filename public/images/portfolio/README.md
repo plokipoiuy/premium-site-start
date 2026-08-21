@@ -4,8 +4,5 @@
 
 | 파일명 | 내용 |
 |---|---|
-| `featured-before.jpg` | 청소 전 |
-| `featured-after.jpg` | 청소 후 |
-
-업로드하신 사진이 `.png`라면 파일명 끝을 `.png`로 맞춰 올려주시고,
-`lib/data/portfolio.ts`의 `beforeImage`/`afterImage` 확장자도 함께 바꿔주세요.
+| `featured-before.png` | 청소 전 |
+| `featured-after.png` | 청소 후 |
