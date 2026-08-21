@@ -25,6 +25,7 @@ export type ServiceType = {
   englishLabel: string;
   summary: string;
   scope: string[];
+  image: string;
   imageAlt: string;
 };
 

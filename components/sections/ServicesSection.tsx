@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/data/services";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { useQuoteModal } from "@/components/quote/QuoteModalContext";
 
 export function ServicesSection() {
@@ -23,11 +23,13 @@ export function ServicesSection() {
           {services.map((service, i) => (
             <Reveal key={service.id} delay={i * 0.1} className="h-full">
               <article className="group flex h-full flex-col overflow-hidden rounded-card bg-white shadow-soft">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <PlaceholderImage
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={service.image}
                     alt={service.imageAlt}
-                    variant="blush"
-                    className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-105"
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-3 p-6">
