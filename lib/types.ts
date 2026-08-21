@@ -60,6 +60,14 @@ export type Testimonial = {
   isPlaceholder: true;
 };
 
+// 실제 후기 등록 전, 디자인 미리보기 용도로만 사용하는 샘플 후기 1건
+export type SampleReview = {
+  maskedName: string;
+  serviceType: string;
+  rating: number;
+  content: string;
+};
+
 export type Notice = {
   id: string;
   category: "공지" | "이벤트" | "안내";
