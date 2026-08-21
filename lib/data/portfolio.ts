@@ -12,6 +12,8 @@ export const featuredCase: PortfolioCase = {
   duration: "약 4시간",
   scope: ["거실·바닥 왁싱", "주방 위생 세척", "새시 및 창틀 정리"],
   isSample: true,
+  beforeImage: "/images/portfolio/featured-before.jpg",
+  afterImage: "/images/portfolio/featured-after.jpg",
 };
 
 export const portfolioCases: PortfolioCase[] = [

@@ -58,8 +58,18 @@ export function PortfolioSection() {
         <Reveal className="mt-10 lg:mt-14">
           <div className="grid gap-8 rounded-card bg-white p-5 shadow-card lg:grid-cols-[1.3fr_1fr] lg:gap-10 lg:p-8">
             <CompareSlider
-              beforeAlt={`${featuredCase.title} - 청소 전 (샘플 이미지)`}
-              afterAlt={`${featuredCase.title} - 청소 후 (샘플 이미지)`}
+              beforeAlt={
+                featuredCase.beforeImage
+                  ? `${featuredCase.title} - 청소 전 거실 모습`
+                  : `${featuredCase.title} - 청소 전 (샘플 이미지)`
+              }
+              afterAlt={
+                featuredCase.afterImage
+                  ? `${featuredCase.title} - 청소 후 정돈된 거실 모습`
+                  : `${featuredCase.title} - 청소 후 (샘플 이미지)`
+              }
+              beforeImage={featuredCase.beforeImage}
+              afterImage={featuredCase.afterImage}
             />
             <div className="flex flex-col justify-center gap-5">
               <div>
