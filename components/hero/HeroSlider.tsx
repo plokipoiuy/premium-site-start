@@ -61,7 +61,7 @@ export function HeroSlider() {
               fill
               sizes="100vw"
               priority={index === 0}
-              className="object-cover"
+              className="object-cover object-[78%_center] lg:object-center"
             />
           </motion.div>
           <div
