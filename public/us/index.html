@@ -103,7 +103,7 @@
   .hero-content{position:relative;z-index:10;display:flex;height:100%;align-items:center;}
   .hero-content .container{width:100%;}
   .hero-copy{max-width:650px;}
-  .hero-copy .eyebrow{color:var(--sage-green);}
+  .hero-copy .eyebrow{color:var(--sage-green);letter-spacing:.15em;padding-right:.15em;}
   .hero-copy h1{margin-top:16px;font-family:var(--font-display);font-size:38px;font-weight:800;line-height:1.2;letter-spacing:-.01em;color:#fff;}
   @media(min-width:1024px){.hero-copy h1{font-size:64px;}}
   .hero-copy p{margin-top:20px;max-width:520px;font-size:16px;line-height:1.7;color:rgba(255,255,255,.85);}
@@ -304,8 +304,8 @@
   .chatbot-back:hover{color:var(--deep-green);}
   .chatbot-q{border-radius:12px;background:var(--ivory);padding:12px 16px;font-size:14px;font-weight:600;color:var(--text-charcoal);}
   .chatbot-r{border-radius:12px;background:rgba(40,92,77,.05);padding:12px 16px;font-size:14px;line-height:1.7;color:var(--text-body);}
-  .chatbot-tooltip{display:none;border-radius:16px 16px 4px 16px;background:#fff;padding:10px 16px;font-size:14px;font-weight:500;color:var(--text-charcoal);box-shadow:0 8px 32px -8px rgba(32,40,36,.10);}
-  .chatbot-tooltip.show{display:block;}
+  .chatbot-tooltip{opacity:0;pointer-events:none;transition:opacity .5s ease;border-radius:16px 16px 4px 16px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);padding:10px 16px;font-size:14px;font-weight:500;color:var(--text-charcoal);box-shadow:0 8px 32px -8px rgba(32,40,36,.10);}
+  .chatbot-tooltip.show{opacity:1;pointer-events:auto;}
   .chatbot-fab{display:flex;height:56px;width:56px;align-items:center;justify-content:center;border-radius:999px;background:var(--deep-green);color:#fff;box-shadow:0 8px 32px -8px rgba(32,40,36,.10);transition:transform .2s;}
   .chatbot-fab:hover{transform:scale(1.05);}
 
@@ -604,7 +604,7 @@
       <div class="featured-info">
         <div>
           <span class="featured-badge">Featured Case · Sample Data</span>
-          <h3>Featured Case: 1,200 Sq Ft Residential Clean</h3>
+          <h3>Featured Case: 1,200 Sq Ft Residential Cleaning</h3>
         </div>
         <div class="info-rows">
           <div class="info-row"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Los Angeles, CA</div>
@@ -1169,11 +1169,19 @@
     optionsView.style.display = 'block';
   });
 
+  var tooltipHideTimer = null;
+  function hideTooltipForGood(){
+    chatTooltip.classList.remove('show');
+    if (tooltipHideTimer){ clearTimeout(tooltipHideTimer); tooltipHideTimer = null; }
+  }
+  chatTooltip.addEventListener('click', hideTooltipForGood);
+
   try {
     if (!window.localStorage.getItem('greenhouse-us-chatbot-tooltip-shown')){
+      window.localStorage.setItem('greenhouse-us-chatbot-tooltip-shown','1');
       setTimeout(function(){
         chatTooltip.classList.add('show');
-        window.localStorage.setItem('greenhouse-us-chatbot-tooltip-shown','1');
+        tooltipHideTimer = setTimeout(hideTooltipForGood, 5000);
       }, 1200);
     }
   } catch(e){}
