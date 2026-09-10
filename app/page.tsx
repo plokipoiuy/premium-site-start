@@ -7,11 +7,12 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { NoticeStatusSection } from "@/components/sections/NoticeStatusSection";
+import { PartnersChecklistSection } from "@/components/sections/PartnersChecklistSection";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCtaBanner } from "@/components/sections/FinalCtaBanner";
 import { Chatbot } from "@/components/chatbot/Chatbot";
 import { QuoteModalProvider } from "@/components/quote/QuoteModalContext";
-import { QuoteFormModal } from "@/components/quote/QuoteFormModal";
+import { ContactModal } from "@/components/quote/ContactModal";
 
 export default function Home() {
   return (
@@ -24,13 +25,14 @@ export default function Home() {
         <ProcessSection />
         <PortfolioSection />
         <TestimonialsSection />
-        <NoticeStatusSection />
+        <PartnersChecklistSection />
+        <FaqSection />
         <FinalCtaBanner />
       </main>
       <Footer />
       <MobileBar />
       <Chatbot />
-      <QuoteFormModal />
+      <ContactModal />
     </QuoteModalProvider>
   );
 }

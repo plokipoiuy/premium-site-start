@@ -7,7 +7,7 @@ export const navLinks: NavLink[] = [
   { label: "진행과정", href: "#process" },
   { label: "작업사례", href: "#portfolio" },
   { label: "고객후기", href: "#testimonials" },
-  { label: "공지사항", href: "#notice" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export const quoteCta = { label: "간편 견적", href: "#quote" };

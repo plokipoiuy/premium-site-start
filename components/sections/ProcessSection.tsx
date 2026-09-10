@@ -4,8 +4,6 @@ import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { processSteps } from "@/lib/data/process";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
-import { useQuoteModal } from "@/components/quote/QuoteModalContext";
 
 const TOTAL_DURATION = 3.4;
 const IDLE_COLOR = { backgroundColor: "#FFFFFF", borderColor: "#E5E9E6", color: "#202824", scale: 1 };
@@ -62,7 +60,6 @@ export function ProcessSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.4 });
   const prefersReducedMotion = useReducedMotion();
-  const { open } = useQuoteModal();
   const lastIndex = processSteps.length - 1;
   const stepDelay = TOTAL_DURATION / lastIndex;
 
@@ -135,12 +132,6 @@ export function ProcessSection() {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="mt-14 flex justify-center lg:mt-16">
-          <Button onClick={open} size="lg">
-            내 집 청소 일정 확인하기
-          </Button>
         </div>
       </div>
     </section>

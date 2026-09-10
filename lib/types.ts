@@ -69,20 +69,22 @@ export type SampleReview = {
   content: string;
 };
 
-export type Notice = {
+export type FaqItem = {
   id: string;
-  category: "공지" | "이벤트" | "안내";
-  title: string;
-  date: string;
+  question: string;
+  answer: string;
 };
 
-export type ReservationStatus = "접수완료" | "상담중" | "상담완료" | "예약확정";
-
-export type ReservationEntry = {
+export type ChecklistItem = {
   id: string;
-  status: ReservationStatus;
-  maskedName: string;
-  serviceType: string;
+  text: string;
+};
+
+// isSample: true — 실제 협력사 동의를 받기 전까지는 샘플 표기가 필요합니다.
+export type PartnerCompany = {
+  id: string;
+  name: string;
+  isSample: boolean;
 };
 
 export type ChatbotOption = {

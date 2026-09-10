@@ -34,6 +34,10 @@ const config: Config = {
           "0%": { transform: "translateY(0)" },
           "100%": { transform: "translateY(-50%)" },
         },
+        "marquee-x": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
         "light-travel": {
           "0%": { strokeDashoffset: "1000" },
           "100%": { strokeDashoffset: "0" },
@@ -45,6 +49,7 @@ const config: Config = {
       },
       animation: {
         marquee: "marquee 30s linear infinite",
+        "marquee-x": "marquee-x 22s linear infinite",
         "fade-up": "fade-up 0.7s ease-out forwards",
       },
       boxShadow: {
