@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/lib/siteConfig";
-import { LocalBusinessJsonLd } from "@/components/seo/LocalBusinessJsonLd";
+import { siteConfig } from "@/archive/greenhouse/lib/siteConfig";
+import { LocalBusinessJsonLd } from "@/archive/greenhouse/components/seo/LocalBusinessJsonLd";
 
 const manrope = Manrope({
   subsets: ["latin"],

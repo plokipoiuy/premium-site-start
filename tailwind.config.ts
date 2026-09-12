@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
-import { siteConfig } from "./lib/siteConfig";
-import { siteConfigGridaclean } from "./lib/siteConfig.gridaclean";
+import { siteConfig } from "./archive/greenhouse/lib/siteConfig";
+import { siteConfigGridaclean } from "./sample/gridaclean/lib/siteConfig";
 
 // 강조색을 흰색과 섞어 배지/태그용 연한 톤을 자동으로 만든다.
 function lighten(hex: string, amount: number): string {
@@ -15,8 +15,9 @@ function lighten(hex: string, amount: number): string {
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
     "./lib/**/*.{ts,tsx}",
+    "./sample/**/*.{ts,tsx}",
+    "./archive/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
