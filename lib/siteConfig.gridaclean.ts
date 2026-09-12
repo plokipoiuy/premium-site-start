@@ -33,19 +33,19 @@ export const siteConfigGridaclean = {
   officialWebsite: "www.sample-preview.com",
 
   serviceAreas: ["세종"],
-  services: ["입주청소", "이사청소", "거주청소", "부분·집중청소"],
+  services: ["입주청소", "상가청소", "사무실청소", "에어컨청소"],
 
   // 색상 방식: 자동 — 그리다클린 업체명/업종이 주는 밝은 sky blue / cyan 계열 인상을 반영.
   // 실제 로고 바이너리를 확인하지 못해 로고 자체 색상 추출은 불가했고, 블로그 접근도
   // 차단되어(iframe/동적 로딩) 업체명과 업종을 기준으로 자연스러운 청소업체 브랜드
   // 톤으로 판단했습니다. 2~3개 핵심 컬러로 정돈.
-  primaryColor: "#0EA5E9", // 메인 — sky blue
-  secondaryColor: "#7DD3FC", // 보조 — 밝은 sky (연한 톤)
-  accentColor: "#0369A1", // 강조/CTA — 진한 블루 (버튼 가독성 확보용 대비)
+  primaryColor: "#35BCEC", // 메인 — 밝은 sky blue
+  secondaryColor: "#0878B5", // 보조 — 진한 teal
+  accentColor: "#E85B7A", // 강조/CTA — 산호 핑크 (주요 액션 강조용)
 
-  seoTitle: "그리다클린 GRIDA CLEAN | 세종 입주·이사·거주 청소 전문 (샘플)",
+  seoTitle: "그리다클린 GRIDA CLEAN | 세종 입주·상가·사무실·에어컨 청소 전문 (샘플)",
   seoDescription:
-    "세종 지역 기반 청소 전문 브랜드 그리다클린. 입주청소, 이사청소, 거주청소, 부분·집중청소를 투명한 상담과 꼼꼼한 검수로 진행합니다. (영업용 샘플 페이지)",
+    "세종 지역 기반 청소 전문 브랜드 그리다클린. 입주청소, 상가청소, 사무실청소, 에어컨청소를 투명한 상담과 꼼꼼한 검수로 진행합니다. (영업용 샘플 페이지)",
   canonicalUrl: "https://premium-site-start.vercel.app/gridaclean",
 };
 
