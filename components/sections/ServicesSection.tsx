@@ -1,15 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/data/services";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { useQuoteModal } from "@/components/quote/QuoteModalContext";
 
 export function ServicesSection() {
-  const { open } = useQuoteModal();
-
   return (
     <section id="services" className="section-padding bg-blush-pink/60">
       <div className="container-content">
@@ -40,7 +36,7 @@ export function ServicesSection() {
                     <h3 className="mt-1 text-xl font-bold text-text-charcoal">{service.name}</h3>
                   </div>
                   <p className="text-sm leading-[1.7] text-text-body">{service.summary}</p>
-                  <ul className="mt-1 flex flex-col gap-1.5">
+                  <ul className="mt-auto flex flex-col gap-1.5">
                     {service.scope.slice(0, 3).map((item) => (
                       <li key={item} className="flex items-start gap-2 text-xs text-text-muted">
                         <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-sage-green" aria-hidden="true" />
@@ -48,15 +44,6 @@ export function ServicesSection() {
                       </li>
                     ))}
                   </ul>
-                  <button
-                    type="button"
-                    onClick={open}
-                    aria-label={`${service.name} 견적 문의하기`}
-                    className="mt-auto flex items-center gap-1.5 pt-3 text-sm font-semibold text-deep-green transition-colors hover:text-coral-pink focus-visible:outline-deep-green"
-                  >
-                    자세히 보기
-                    <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                  </button>
                 </div>
               </article>
             </Reveal>

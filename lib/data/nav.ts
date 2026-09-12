@@ -7,7 +7,7 @@ export const navLinks: NavLink[] = [
   { label: "청소서비스", href: "#services" },
   { label: "진행과정", href: "#process" },
   { label: "작업사례", href: "#portfolio" },
-  ...(siteConfig.hasRealReviews ? [{ label: "고객후기", href: "#testimonials" }] : []),
+  { label: "고객후기", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
 ];
 

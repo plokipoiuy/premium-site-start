@@ -4,7 +4,8 @@
 // ============================================================
 
 export const siteConfig = {
-  // "preview": 영업용 샘플 (검색엔진 노출 차단) / "production": 실 계약 사이트
+  // "preview": 영업용 샘플 (검색엔진 노출 차단, LocalBusiness 구조화 데이터 미출력)
+  // "production": 실 계약 사이트 (SEO 색인 허용, 구조화 데이터 출력 가능)
   siteMode: "preview" as "preview" | "production",
 
   businessName: "그린하우스",
@@ -19,19 +20,18 @@ export const siteConfig = {
   smsBody:
     "안녕하세요, 그린하우스 청소 문의드립니다. 청소 종류/지역/평수/희망 날짜를 남겨주시면 더 빠르게 안내드릴 수 있어요.",
   kakaoUrl: "", // 실제 카카오톡 오픈채팅 URL. 없으면 카카오 버튼 숨김
-  email: "", // 실제 수신 가능한 이메일. 없으면 이메일 버튼 숨김
 
-  // 사업자 정보 — 실제 값이 없으면 빈 문자열로 두세요. Footer에서 자동으로 숨겨집니다.
-  address: "",
-  businessRegNo: "",
-  representativeName: "",
+  // 아래 5개는 Footer 업체정보 카드 전용(SAMPLE) — 실제 연결되는 링크가 아닌 표시 텍스트입니다.
+  // 실제 계약 시 확인된 값으로 교체하세요.
+  representativeName: "샘플 담당자",
+  representativePhone: "123-4567-8901",
+  businessRegNo: "123-45-67890",
+  address: "대한민국 대한시 대한동 111-1111",
+  email: "sample@sample.com",
+  officialWebsite: "www.sample-preview.com",
 
-  serviceAreas: ["서울 강남구"],
+  serviceAreas: ["전국"],
   services: ["입주청소", "이사청소", "거주청소", "부분·집중청소"],
-
-  // 실제 후기 / 협력사 데이터가 준비되면 true로 바꾸세요 (그러면 해당 섹션이 노출됩니다)
-  hasRealReviews: false,
-  hasRealPartners: false,
 
   // 브랜드 컬러 3개 — 이 값만 바꾸면 사이트 전체 배색이 자동으로 바뀝니다 (tailwind.config.ts 참고)
   primaryColor: "#285C4D", // 메인 (기존 deep-green)
