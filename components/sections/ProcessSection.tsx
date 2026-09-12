@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { processSteps } from "@/lib/data/process";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { siteConfig } from "@/lib/siteConfig";
 
 const TOTAL_DURATION = 3.4;
 const IDLE_COLOR = { backgroundColor: "#FFFFFF", borderColor: "#E5E9E6", color: "#202824", scale: 1 };
@@ -23,8 +24,8 @@ function StepNode({
   reducedMotion: boolean | null;
   className: string;
 }) {
-  // 핑크(도착)로 반짝인 뒤 초록(완료)으로 안착 — 마지막 단계는 핑크로 유지
-  const litColor = isLast ? "#EF6F8D" : "#285C4D";
+  // 강조색(도착)으로 반짝인 뒤 메인색(완료)으로 안착 — 마지막 단계는 강조색으로 유지
+  const litColor = isLast ? siteConfig.accentColor : siteConfig.primaryColor;
 
   return (
     <motion.div
@@ -32,8 +33,8 @@ function StepNode({
       animate={
         isInView
           ? {
-              backgroundColor: ["#FFFFFF", "#EF6F8D", litColor],
-              borderColor: ["#FFFFFF", "#EF6F8D", litColor],
+              backgroundColor: ["#FFFFFF", siteConfig.accentColor, litColor],
+              borderColor: ["#FFFFFF", siteConfig.accentColor, litColor],
               color: ["#202824", "#FFFFFF", "#FFFFFF"],
               scale: [1, 1.15, 1],
             }

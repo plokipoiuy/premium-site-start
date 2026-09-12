@@ -1,4 +1,15 @@
 import type { Config } from "tailwindcss";
+import { siteConfig } from "./lib/siteConfig";
+
+// 강조색을 흰색과 섞어 배지/태그용 연한 톤을 자동으로 만든다.
+function lighten(hex: string, amount: number): string {
+  const num = parseInt(hex.replace("#", ""), 16);
+  const mix = (channel: number) => Math.round(channel + (255 - channel) * amount);
+  const r = mix((num >> 16) & 0xff);
+  const g = mix((num >> 8) & 0xff);
+  const b = mix(num & 0xff);
+  return `#${[r, g, b].map((c) => c.toString(16).padStart(2, "0")).join("")}`;
+}
 
 const config: Config = {
   content: [
@@ -9,10 +20,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "deep-green": "#285C4D",
-        "sage-green": "#8EAD9D",
-        "coral-pink": "#EF6F8D",
-        "blush-pink": "#F9E4E8",
+        // 브랜드 컬러 3개 — lib/siteConfig.ts에서만 관리 (기존 클래스명은 그대로 유지)
+        "deep-green": siteConfig.primaryColor,
+        "sage-green": siteConfig.secondaryColor,
+        "coral-pink": siteConfig.accentColor,
+        "blush-pink": lighten(siteConfig.accentColor, 0.85),
         ivory: "#F8F6F0",
         "text-charcoal": "#202824",
         "text-body": "#59625E",

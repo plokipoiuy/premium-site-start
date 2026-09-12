@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/siteConfig";
+
 type LogoProps = {
   className?: string;
   mark?: string;
@@ -5,7 +7,7 @@ type LogoProps = {
 };
 
 // 지붕 윤곽 + 잎사귀 + 작은 반짝임을 결합한 라인형 심볼
-export function Logo({ className = "", mark = "#285C4D", text = "#202824" }: LogoProps) {
+export function Logo({ className = "", mark = siteConfig.primaryColor, text = "#202824" }: LogoProps) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -34,10 +36,10 @@ export function Logo({ className = "", mark = "#285C4D", text = "#202824" }: Log
       </svg>
       <span className="flex flex-col leading-none">
         <span className="font-manrope text-[15px] font-extrabold tracking-[0.06em]" style={{ color: text }}>
-          GREEN HOUSE
+          {siteConfig.businessNameEnglish}
         </span>
         <span className="mt-0.5 text-[11px] font-medium tracking-tight" style={{ color: text, opacity: 0.65 }}>
-          그린하우스
+          {siteConfig.businessName}
         </span>
       </span>
     </span>

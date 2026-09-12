@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { MessageCircleHeart, X, ArrowLeft } from "lucide-react";
 import { chatbotOptions } from "@/lib/data/chatbot";
 import { ChatbotOption } from "@/lib/types";
+import { siteConfig } from "@/lib/siteConfig";
 
 const TOOLTIP_STORAGE_KEY = "greenhouse-chatbot-tooltip-shown";
 
@@ -39,11 +40,11 @@ export function Chatbot() {
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             role="dialog"
-            aria-label="그린하우스 챗봇"
+            aria-label={`${siteConfig.businessName} 챗봇`}
             className="flex w-[300px] flex-col overflow-hidden rounded-card bg-white shadow-card sm:w-80"
           >
             <div className="flex items-center justify-between bg-deep-green px-5 py-4">
-              <span className="text-sm font-bold text-white">그린하우스 안내 챗봇</span>
+              <span className="text-sm font-bold text-white">{siteConfig.businessName} 안내 챗봇</span>
               <button
                 type="button"
                 aria-label="챗봇 닫기"

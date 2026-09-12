@@ -1,12 +1,13 @@
 import { NavLink } from "@/lib/types";
+import { siteConfig } from "@/lib/siteConfig";
 
 // 헤더 및 모바일 메뉴에서 공통으로 사용하는 내비게이션 항목
 export const navLinks: NavLink[] = [
-  { label: "그린하우스 소개", href: "#about" },
+  { label: `${siteConfig.businessName} 소개`, href: "#about" },
   { label: "청소서비스", href: "#services" },
   { label: "진행과정", href: "#process" },
   { label: "작업사례", href: "#portfolio" },
-  { label: "고객후기", href: "#testimonials" },
+  ...(siteConfig.hasRealReviews ? [{ label: "고객후기", href: "#testimonials" }] : []),
   { label: "FAQ", href: "#faq" },
 ];
 

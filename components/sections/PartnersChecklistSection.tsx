@@ -3,14 +3,25 @@ import { checklistItems } from "@/lib/data/checklist";
 import { partnerCompanies } from "@/lib/data/partners";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { siteConfig } from "@/lib/siteConfig";
+import { josa } from "@/lib/korean";
 
 export function PartnersChecklistSection() {
+  const showPartners = siteConfig.hasRealPartners;
+
   return (
     <section id="partners" className="section-padding bg-ivory">
       <div className="container-content">
-        <SectionHeading eyebrow="INFO" title="청소 전 체크리스트 & 협력 파트너" />
+        <SectionHeading
+          eyebrow="INFO"
+          title={showPartners ? "청소 전 체크리스트 & 협력 파트너" : "청소 전 체크리스트"}
+        />
 
-        <div className="mt-12 grid grid-cols-1 gap-6 lg:mt-16 lg:grid-cols-2 lg:items-stretch">
+        <div
+          className={`mt-12 grid grid-cols-1 gap-6 lg:mt-16 lg:items-stretch ${
+            showPartners ? "lg:grid-cols-2" : "mx-auto max-w-xl"
+          }`}
+        >
           {/* 체크리스트 */}
           <Reveal className="h-full">
             <div className="flex h-full flex-col rounded-card bg-white p-6 shadow-soft lg:p-8">
@@ -26,32 +37,31 @@ export function PartnersChecklistSection() {
             </div>
           </Reveal>
 
-          {/* 협력 파트너 */}
-          <Reveal delay={0.1} className="order-first h-full lg:order-none">
-            <div className="flex h-full flex-col rounded-card bg-white p-6 shadow-soft lg:p-8">
-              <div className="mb-2 flex items-center justify-between">
-                <h3 className="text-lg font-bold text-text-charcoal">그린하우스와 함께한 파트너</h3>
-                <span className="rounded-full bg-blush-pink px-2.5 py-1 text-xs font-bold text-coral-pink">
-                  Sample
-                </span>
-              </div>
-              <p className="mb-2 text-xs text-text-muted">
-                실제 협력사 정보는 게재 동의를 받은 후 업데이트될 예정입니다.
-              </p>
-              <div className="group relative mt-4 flex flex-1 min-h-[120px] items-center overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-                <div className="flex w-max animate-marquee-x items-center gap-12 group-hover:[animation-play-state:paused] motion-reduce:animate-none">
-                  {[...partnerCompanies, ...partnerCompanies].map((partner, i) => (
-                    <span
-                      key={`${partner.id}-${i}`}
-                      className="shrink-0 whitespace-nowrap text-base font-semibold text-text-muted lg:text-lg"
-                    >
-                      {partner.name}
-                    </span>
-                  ))}
+          {/* 협력 파트너 — 실제 협력사 데이터가 있을 때만 노출 */}
+          {showPartners && (
+            <Reveal delay={0.1} className="order-first h-full lg:order-none">
+              <div className="flex h-full flex-col rounded-card bg-white p-6 shadow-soft lg:p-8">
+                <div className="mb-2 flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-text-charcoal">
+                    {siteConfig.businessName}
+                    {josa(siteConfig.businessName, "과", "와")} 함께한 파트너
+                  </h3>
+                </div>
+                <div className="group relative mt-4 flex flex-1 min-h-[120px] items-center overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+                  <div className="flex w-max animate-marquee-x items-center gap-12 group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+                    {[...partnerCompanies, ...partnerCompanies].map((partner, i) => (
+                      <span
+                        key={`${partner.id}-${i}`}
+                        className="shrink-0 whitespace-nowrap text-base font-semibold text-text-muted lg:text-lg"
+                      >
+                        {partner.name}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          )}
         </div>
       </div>
     </section>

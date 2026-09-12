@@ -1,0 +1,47 @@
+// ============================================================
+// 업체 정보 & 브랜드 설정 — 새 업체 사이트를 만들 때는 이 파일만 교체하세요.
+// 값이 없는 항목은 빈 문자열("")로 두면 관련 UI가 자동으로 숨겨집니다.
+// ============================================================
+
+export const siteConfig = {
+  // "preview": 영업용 샘플 (검색엔진 노출 차단) / "production": 실 계약 사이트
+  siteMode: "preview" as "preview" | "production",
+
+  businessName: "그린하우스",
+  businessNameEnglish: "GREEN HOUSE",
+
+  // 로고 이미지 경로가 있으면 넣으세요. 없으면 기본 하우스 마크(SVG)를 사용합니다.
+  logo: "",
+
+  // 연락처 — 값이 없으면("") 해당 연락 채널 버튼이 자동으로 숨겨집니다.
+  phoneRaw: "0212345678", // tel:/sms: 링크용, 하이픈 없이
+  phoneDisplay: "02-1234-5678", // 화면 표시용
+  smsBody:
+    "안녕하세요, 그린하우스 청소 문의드립니다. 청소 종류/지역/평수/희망 날짜를 남겨주시면 더 빠르게 안내드릴 수 있어요.",
+  kakaoUrl: "", // 실제 카카오톡 오픈채팅 URL. 없으면 카카오 버튼 숨김
+  email: "", // 실제 수신 가능한 이메일. 없으면 이메일 버튼 숨김
+
+  // 사업자 정보 — 실제 값이 없으면 빈 문자열로 두세요. Footer에서 자동으로 숨겨집니다.
+  address: "",
+  businessRegNo: "",
+  representativeName: "",
+
+  serviceAreas: ["서울 강남구"],
+  services: ["입주청소", "이사청소", "거주청소", "부분·집중청소"],
+
+  // 실제 후기 / 협력사 데이터가 준비되면 true로 바꾸세요 (그러면 해당 섹션이 노출됩니다)
+  hasRealReviews: false,
+  hasRealPartners: false,
+
+  // 브랜드 컬러 3개 — 이 값만 바꾸면 사이트 전체 배색이 자동으로 바뀝니다 (tailwind.config.ts 참고)
+  primaryColor: "#285C4D", // 메인 (기존 deep-green)
+  secondaryColor: "#8EAD9D", // 보조 (기존 sage-green)
+  accentColor: "#EF6F8D", // 강조/CTA (기존 coral-pink)
+
+  seoTitle: "그린하우스 GREEN HOUSE | 강남 아파트 입주·이사·거주 청소 전문",
+  seoDescription:
+    "서울 강남구 논현로 기반 아파트 청소 전문 브랜드 그린하우스. 입주청소, 이사청소, 거주청소, 부분·집중청소를 투명한 상담과 꼼꼼한 검수로 진행합니다.",
+  canonicalUrl: "https://greenhouse-cleaning-preview.vercel.app",
+};
+
+export type SiteConfig = typeof siteConfig;

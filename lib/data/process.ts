@@ -4,14 +4,14 @@ export const processSteps: ProcessStep[] = [
   {
     id: "step-1",
     step: 1,
-    title: "간편 견적 신청",
-    description: "1분이면 충분한 간단한 정보 입력으로 시작합니다.",
+    title: "상담 요청",
+    description: "전화·문자·카카오톡 중 편한 방법으로 상담을 요청해주세요.",
   },
   {
     id: "step-2",
     step: 2,
     title: "상담 및 일정 확정",
-    description: "담당자가 연락드려 공간과 일정을 함께 확인합니다.",
+    description: "상담 후 일정을 확정해드립니다.",
   },
   {
     id: "step-3",

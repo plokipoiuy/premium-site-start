@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { heroSlides } from "@/lib/data/hero";
 import { Button } from "@/components/ui/Button";
 import { useQuoteModal } from "@/components/quote/QuoteModalContext";
+import { siteConfig } from "@/lib/siteConfig";
 
 const SLIDE_DURATION = 5000;
 
@@ -37,7 +38,7 @@ export function HeroSlider() {
     <section
       id="top"
       aria-roledescription="carousel"
-      aria-label="그린하우스 소개 슬라이드"
+      aria-label={`${siteConfig.businessName} 소개 슬라이드`}
       className="relative h-[90svh] min-h-[560px] w-full overflow-hidden bg-deep-green"
     >
       <AnimatePresence mode="sync">
@@ -100,7 +101,7 @@ export function HeroSlider() {
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button onClick={open} size="lg">
-                1분 간편 견적 받기
+                청소 견적 문의하기
               </Button>
               <Button href="#portfolio" variant="ghost" size="lg">
                 실제 작업 사례 보기

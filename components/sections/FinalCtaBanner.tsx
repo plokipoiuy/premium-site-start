@@ -5,10 +5,11 @@ import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { useQuoteModal } from "@/components/quote/QuoteModalContext";
-import { contactInfo } from "@/lib/data/contact";
+import { siteConfig } from "@/lib/siteConfig";
 
 export function FinalCtaBanner() {
   const { open } = useQuoteModal();
+  const hasKakao = Boolean(siteConfig.kakaoUrl) && siteConfig.kakaoUrl !== "#";
 
   return (
     <section id="quote" className="relative overflow-hidden">
@@ -25,15 +26,15 @@ export function FinalCtaBanner() {
             지금 편하신 방법으로 문의해 보세요.
           </h2>
           <p className="max-w-lg text-sm leading-[1.7] text-white/85 lg:text-base">
-            양식 작성 없이 전화, 문자, 카카오톡으로 바로 문의하실 수 있습니다.
+            양식 작성 없이 {hasKakao ? "전화, 문자, 카카오톡으로" : "전화나 문자로"} 바로 문의하실 수 있습니다.
             <br />
             문의만으로 예약이나 결제가 확정되지 않습니다.
           </p>
           <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
             <Button onClick={open} size="lg">
-              1분 간편 견적 받기
+              청소 견적 문의하기
             </Button>
-            <Button href={`tel:${contactInfo.phoneRaw}`} variant="ghost" size="lg">
+            <Button href={`tel:${siteConfig.phoneRaw}`} variant="ghost" size="lg">
               <Phone size={18} aria-hidden="true" />
               전화로 상담하기
             </Button>

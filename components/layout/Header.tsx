@@ -6,6 +6,7 @@ import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { navLinks, quoteCta } from "@/lib/data/nav";
 import { useQuoteModal } from "@/components/quote/QuoteModalContext";
+import { siteConfig } from "@/lib/siteConfig";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,8 +45,8 @@ export function Header() {
       }`}
     >
       <div className="container-content flex h-[72px] items-center justify-between lg:h-20">
-        <a href="#top" className="shrink-0" aria-label="그린하우스 홈으로 이동">
-          <Logo mark={solid ? "#285C4D" : "#FFFFFF"} text={solid ? "#202824" : "#FFFFFF"} />
+        <a href="#top" className="shrink-0" aria-label={`${siteConfig.businessName} 홈으로 이동`}>
+          <Logo mark={solid ? siteConfig.primaryColor : "#FFFFFF"} text={solid ? "#202824" : "#FFFFFF"} />
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="주요 메뉴">

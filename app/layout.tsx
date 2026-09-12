@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { siteConfig } from "@/lib/siteConfig";
+import { LocalBusinessJsonLd } from "@/components/seo/LocalBusinessJsonLd";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -10,23 +11,31 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const isPreview = siteConfig.siteMode === "preview";
+
 export const metadata: Metadata = {
-  title: "그린하우스 GREEN HOUSE | 강남 아파트 입주·이사·거주 청소 전문",
-  description:
-    "서울 강남구 논현로 기반 아파트 청소 전문 브랜드 그린하우스. 입주청소, 이사청소, 거주청소, 부분·집중청소를 투명한 상담과 꼼꼼한 검수로 진행합니다.",
-  keywords: ["강남 청소업체", "아파트 청소", "입주청소", "이사청소", "그린하우스"],
+  title: siteConfig.seoTitle,
+  description: siteConfig.seoDescription,
+  keywords: [...siteConfig.serviceAreas, ...siteConfig.services, siteConfig.businessName],
+  alternates: {
+    canonical: siteConfig.canonicalUrl,
+  },
   openGraph: {
-    title: "그린하우스 GREEN HOUSE | 강남 아파트 청소 전문",
-    description: "상담부터 검수까지 투명하고 꼼꼼한 강남 아파트 청소 전문 브랜드",
+    title: siteConfig.seoTitle,
+    description: siteConfig.seoDescription,
     type: "website",
     locale: "ko_KR",
   },
+  // preview: 영업용 샘플이므로 검색엔진 색인을 막는다. 실 계약 시 siteConfig.siteMode를 "production"으로.
+  robots: isPreview
+    ? { index: false, follow: false }
+    : { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#285C4D",
+  themeColor: siteConfig.primaryColor,
 };
 
 export default function RootLayout({
@@ -37,8 +46,8 @@ export default function RootLayout({
   return (
     <html lang="ko" className={manrope.variable}>
       <body>
+        <LocalBusinessJsonLd />
         {children}
-        <Analytics />
       </body>
     </html>
   );

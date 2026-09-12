@@ -2,6 +2,8 @@ import { ShieldCheck, ReceiptText, Wrench, Users, ClipboardCheck, Hammer } from 
 import { trustPoints } from "@/lib/data/trust";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { siteConfig } from "@/lib/siteConfig";
+import { josa } from "@/lib/korean";
 
 const icons = [ShieldCheck, ReceiptText, Wrench, Users, ClipboardCheck, Hammer];
 
@@ -9,7 +11,9 @@ export function TrustSection() {
   return (
     <section id="about" className="section-padding bg-ivory">
       <div className="container-content">
-        <SectionHeading title="그린하우스를 선택하는 분명한 이유" />
+        <SectionHeading
+          title={`${siteConfig.businessName}${josa(siteConfig.businessName, "을", "를")} 선택하는 분명한 이유`}
+        />
 
         <div className="mt-12 grid grid-cols-1 gap-5 lg:mt-16 lg:grid-cols-3 lg:gap-6">
           {trustPoints.map((point, i) => {

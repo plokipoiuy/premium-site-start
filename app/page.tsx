@@ -13,6 +13,7 @@ import { FinalCtaBanner } from "@/components/sections/FinalCtaBanner";
 import { Chatbot } from "@/components/chatbot/Chatbot";
 import { QuoteModalProvider } from "@/components/quote/QuoteModalContext";
 import { ContactModal } from "@/components/quote/ContactModal";
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
         <ServicesSection />
         <ProcessSection />
         <PortfolioSection />
-        <TestimonialsSection />
+        {siteConfig.hasRealReviews && <TestimonialsSection />}
         <PartnersChecklistSection />
         <FaqSection />
         <FinalCtaBanner />
