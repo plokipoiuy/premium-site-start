@@ -12,7 +12,7 @@ export function ServicesSection() {
         <SectionHeading
           eyebrow="SERVICES"
           title="공간과 상황에 맞는 청소서비스"
-          description="입주부터 거주, 부분 청소까지 필요한 만큼만 선택할 수 있습니다."
+          description="주거 공간부터 상가·사무실, 에어컨까지 공간에 맞는 전문 청소 서비스를 제공합니다."
         />
 
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">

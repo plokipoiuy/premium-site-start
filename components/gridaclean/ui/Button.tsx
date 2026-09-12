@@ -4,7 +4,7 @@ const base =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 ease-out active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50";
 
 const variants = {
-  primary: "bg-grida-accent text-white shadow-soft hover:bg-[#e05c7c] focus-visible:outline-grida-accent",
+  primary: "bg-grida-accent text-white shadow-soft hover:bg-[#D74668] focus-visible:outline-grida-accent",
   secondary:
     "bg-white text-grida-blue border border-grida-blue/20 hover:border-grida-blue hover:bg-grida-blue/5 focus-visible:outline-grida-blue",
   ghost:
