@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { useQuoteModal } from "@/components/quote/QuoteModalContext";
 import { siteConfig } from "@/lib/siteConfig";
+import { guardSampleLink } from "@/lib/sampleGuard";
 
 export function FinalCtaBanner() {
   const { open } = useQuoteModal();
@@ -34,7 +35,7 @@ export function FinalCtaBanner() {
             <Button onClick={open} size="lg">
               청소 견적 문의하기
             </Button>
-            <Button href={`tel:${siteConfig.phoneRaw}`} variant="ghost" size="lg">
+            <Button href={`tel:${siteConfig.phoneRaw}`} onClick={guardSampleLink} variant="ghost" size="lg">
               <Phone size={18} aria-hidden="true" />
               전화로 상담하기
             </Button>

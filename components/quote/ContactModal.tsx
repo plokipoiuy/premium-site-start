@@ -4,6 +4,7 @@ import { MessageCircle, MessageSquareText, Phone } from "lucide-react";
 import { Modal } from "@/components/ui/Modal";
 import { useQuoteModal } from "@/components/quote/QuoteModalContext";
 import { siteConfig } from "@/lib/siteConfig";
+import { guardSampleLink } from "@/lib/sampleGuard";
 
 const optionClass =
   "flex items-center gap-4 rounded-2xl border border-divider px-5 py-4 text-left transition-colors hover:border-deep-green hover:bg-deep-green/5 focus-visible:outline-deep-green";
@@ -22,7 +23,14 @@ export function ContactModal() {
       </p>
 
       <div className="mt-6 flex flex-col gap-3">
-        <a href={`tel:${siteConfig.phoneRaw}`} onClick={close} className={optionClass}>
+        <a
+          href={`tel:${siteConfig.phoneRaw}`}
+          onClick={(e) => {
+            guardSampleLink(e);
+            close();
+          }}
+          className={optionClass}
+        >
           <span className={`${iconWrapClass} bg-deep-green/10 text-deep-green`}>
             <Phone size={20} aria-hidden="true" />
           </span>
@@ -32,7 +40,14 @@ export function ContactModal() {
           </span>
         </a>
 
-        <a href={smsHref} onClick={close} className={optionClass}>
+        <a
+          href={smsHref}
+          onClick={(e) => {
+            guardSampleLink(e);
+            close();
+          }}
+          className={optionClass}
+        >
           <span className={`${iconWrapClass} bg-coral-pink/10 text-coral-pink`}>
             <MessageSquareText size={20} aria-hidden="true" />
           </span>
@@ -47,7 +62,10 @@ export function ContactModal() {
             href={siteConfig.kakaoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={close}
+            onClick={(e) => {
+              guardSampleLink(e);
+              close();
+            }}
             className={optionClass}
           >
             <span className={`${iconWrapClass} bg-[#FEE500] text-[#3C1E1E]`}>
