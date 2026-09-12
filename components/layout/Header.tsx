@@ -54,7 +54,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-coral-pink ${
+              className={`text-base font-medium transition-colors hover:text-coral-pink ${
                 solid ? "text-text-charcoal" : "text-white"
               }`}
             >

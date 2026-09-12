@@ -21,8 +21,8 @@ export function TrustSection() {
             return (
               <Reveal key={point.id} delay={i * 0.1}>
                 <div className="flex h-full flex-col gap-4 rounded-card bg-white p-7 shadow-soft lg:p-8">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-deep-green/8 text-deep-green">
-                    <Icon size={22} strokeWidth={1.75} aria-hidden="true" />
+                  <div className="flex h-28 w-28 items-center justify-center rounded-2xl bg-deep-green/8 text-deep-green">
+                    <Icon size={88} strokeWidth={1.75} aria-hidden="true" />
                   </div>
                   <h3 className="text-lg font-bold text-text-charcoal">{point.title}</h3>
                   <p className="text-sm leading-[1.7] text-text-body lg:text-base">{point.description}</p>
