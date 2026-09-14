@@ -24,7 +24,7 @@ export function TrustSection() {
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-neul-green/8 text-neul-green">
                     <Icon size={40} strokeWidth={1.75} aria-hidden="true" />
                   </div>
-                  <h3 className="text-lg font-bold text-text-charcoal">{point.title}</h3>
+                  <h3 className="text-lg font-bold text-text-charcoal line-clamp-1">{point.title}</h3>
                   <p className="text-sm leading-[1.7] text-text-body lg:text-base">{point.description}</p>
                 </div>
               </Reveal>
