@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 import { siteConfig } from "./archive/greenhouse/lib/siteConfig";
 import { siteConfigGridaclean } from "./sample/gridaclean/lib/siteConfig";
 import { siteConfigNeulkkalkkeum } from "./sample/neulkkalkkeum/lib/siteConfig";
+import { siteConfigCheongsodaejang } from "./sample/cheongsodaejang/lib/siteConfig";
 
 // 강조색을 흰색과 섞어 배지/태그용 연한 톤을 자동으로 만든다.
 function lighten(hex: string, amount: number): string {
@@ -42,6 +43,13 @@ const config: Config = {
         "neul-pink-light": lighten(siteConfigNeulkkalkkeum.accentColor, 0.85),
         "neul-bg": "#FAF6EC",
         "neul-card": "#FFFFFF",
+        // 청소대장 Sample #004 전용 브랜드 컬러 — 그리다클린과 동일한 블루 팔레트를 그대로 재사용
+        "cheongso-blue": siteConfigCheongsodaejang.primaryColor,
+        "cheongso-sky": siteConfigCheongsodaejang.secondaryColor,
+        "cheongso-accent": siteConfigCheongsodaejang.accentColor,
+        "cheongso-accent-light": lighten(siteConfigCheongsodaejang.accentColor, 0.85),
+        "cheongso-bg": "#F5FAFC",
+        "cheongso-card": "#FFFFFF",
         ivory: "#F5FAFC",
         "text-charcoal": "#202824",
         "text-body": "#59625E",
