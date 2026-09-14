@@ -18,7 +18,7 @@ export function TestimonialsSection() {
         <div className="mt-12 grid grid-cols-1 gap-5 lg:mt-16 lg:grid-cols-3 lg:gap-6">
           {sampleReviews.map((review, i) => (
             <Reveal key={review.id} delay={i * 0.1}>
-              <div className="relative flex h-full flex-col items-center gap-4 rounded-card border border-divider bg-neul-bg p-8 text-center">
+              <div className="relative flex h-full flex-col items-center gap-4 rounded-card border border-divider bg-ivory p-8 text-center">
                 <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neul-pink px-3 py-1 text-xs font-bold text-white">
                   샘플
                 </span>

@@ -84,7 +84,7 @@ export function Chatbot() {
                     <ArrowLeft size={14} aria-hidden="true" />
                     다른 질문 보기
                   </button>
-                  <div className="rounded-xl bg-neul-bg px-4 py-3 text-sm font-semibold text-text-charcoal">
+                  <div className="rounded-xl bg-ivory px-4 py-3 text-sm font-semibold text-text-charcoal">
                     {selected.label}
                   </div>
                   <p className="rounded-xl bg-neul-green/5 px-4 py-3 text-sm leading-[1.7] text-text-body">

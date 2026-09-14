@@ -2,20 +2,37 @@ import { siteConfigNeulkkalkkeum as siteConfig } from "@/sample/neulkkalkkeum/li
 
 type LogoProps = {
   className?: string;
+  mark?: string;
+  text?: string;
 };
 
-// 늘깔끔 실제 로고(가로형 크롭) 이미지를 그대로 사용합니다.
-// 원본 파일(logo_늘깔끔.jpg)은 현재 세션의 Notion 연동 도구로는 바이너리를 내려받을 수
-// 없어(텍스트 첨부만 다운로드 가능, 파일 속성도 서명 URL을 반환하지 않음) 저장소에 아직
-// 없습니다. public/images/logo/neulkkalkkeum-logo.jpg 경로에 실제 파일을 넣으면
-// 이 컴포넌트가 자동으로 그 이미지를 표시합니다. 로고 자체를 새로 그리지 않습니다.
-export function Logo({ className = "" }: LogoProps) {
+// 원본 로고 우측 하단의 "집 모양 + 반짝이" 심볼을 참고한 단순화된 inline SVG.
+// 원본 로고 이미지(가로형 크롭)는 표시가 깨져 더 이상 사용하지 않고,
+// 심볼 + "늘깔끔" 텍스트 조합으로 대체한다. 새 로고로 재디자인하지 않고
+// 원본 심볼 형태(지붕 + 벽 + 반짝임)만 최대한 단순하게 유지한다.
+export function Logo({ className = "", mark = siteConfig.primaryColor, text = "#202824" }: LogoProps) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={siteConfig.logo}
-      alt={siteConfig.businessName}
-      className={`h-10 w-auto object-contain lg:h-12 ${className}`}
-    />
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path
+          d="M5 15L14 7L23 15"
+          stroke={mark}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M8 13.5V22C8 22.5523 8.44772 23 9 23H19C19.5523 23 20 22.5523 20 22V13.5"
+          stroke={mark}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path d="M24 5L24.7 6.6L26.3 7.3L24.7 8L24 9.6L23.3 8L21.7 7.3L23.3 6.6L24 5Z" fill={mark} />
+      </svg>
+      <span className="font-manrope text-base font-extrabold tracking-tight" style={{ color: text }}>
+        {siteConfig.businessName}
+      </span>
+    </span>
   );
 }

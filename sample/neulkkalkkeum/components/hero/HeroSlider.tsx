@@ -69,7 +69,7 @@ export function HeroSlider() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(90deg, rgba(30,66,49,0.85) 0%, rgba(30,66,49,0.55) 42%, rgba(30,66,49,0.15) 75%, rgba(30,66,49,0) 100%)",
+                "linear-gradient(90deg, rgba(41,99,48,0.85) 0%, rgba(41,99,48,0.55) 42%, rgba(41,99,48,0.15) 75%, rgba(41,99,48,0) 100%)",
             }}
             aria-hidden="true"
           />
@@ -100,7 +100,8 @@ export function HeroSlider() {
             </AnimatePresence>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button onClick={open} size="lg">
+              {/* 모바일/태블릿에서는 하단 고정바(MobileBar)가 견적 CTA를 대신하므로 중복을 피해 숨긴다 */}
+              <Button onClick={open} size="lg" className="hidden lg:inline-flex">
                 청소 견적 문의하기
               </Button>
               <Button href="#portfolio" variant="ghost" size="lg">

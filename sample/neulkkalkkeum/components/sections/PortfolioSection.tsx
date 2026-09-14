@@ -33,7 +33,7 @@ export function PortfolioSection() {
   );
 
   return (
-    <section id="portfolio" className="section-padding bg-neul-bg">
+    <section id="portfolio" className="section-padding bg-ivory">
       <div className="container-content">
         <SectionHeading eyebrow="PORTFOLIO" title="설명보다 확실한 청소 전후의 차이" />
 

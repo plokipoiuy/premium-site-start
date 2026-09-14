@@ -46,7 +46,7 @@ export function Header() {
     >
       <div className="container-content flex h-[72px] items-center justify-between lg:h-20">
         <a href="#top" className="shrink-0" aria-label={`${siteConfig.businessName} 홈으로 이동`}>
-          <Logo />
+          <Logo mark={solid ? siteConfig.primaryColor : "#FFFFFF"} text={solid ? "#202824" : "#FFFFFF"} />
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="주요 메뉴">
@@ -54,7 +54,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-neul-pink ${
+              className={`text-base font-medium transition-colors hover:text-neul-pink ${
                 solid ? "text-text-charcoal" : "text-white"
               }`}
             >

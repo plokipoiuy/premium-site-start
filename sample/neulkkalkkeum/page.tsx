@@ -23,6 +23,21 @@ export const metadata: Metadata = {
   title: siteConfigNeulkkalkkeum.seoTitle,
   description: siteConfigNeulkkalkkeum.seoDescription,
   robots: { index: false, follow: false },
+  // 카카오톡 등 메신저 미리보기용. 검색엔진 색인과는 무관하며 위 robots 설정이 우선한다.
+  openGraph: {
+    title: siteConfigNeulkkalkkeum.seoTitle,
+    description: siteConfigNeulkkalkkeum.seoDescription,
+    url: siteConfigNeulkkalkkeum.canonicalUrl,
+    type: "website",
+    locale: "ko_KR",
+    images: [{ url: "/images/hero/hero-1.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfigNeulkkalkkeum.seoTitle,
+    description: siteConfigNeulkkalkkeum.seoDescription,
+    images: ["/images/hero/hero-1.png"],
+  },
 };
 
 export default function NeulkkalkkeumSampleHome() {

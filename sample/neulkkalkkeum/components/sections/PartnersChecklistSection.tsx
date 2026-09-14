@@ -8,7 +8,7 @@ import { josa } from "@/lib/korean";
 
 export function PartnersChecklistSection() {
   return (
-    <section id="partners" className="section-padding bg-neul-bg">
+    <section id="partners" className="section-padding bg-ivory">
       <div className="container-content">
         <SectionHeading eyebrow="INFO" title="청소 전 체크리스트 & 협력 파트너" />
 
@@ -29,7 +29,7 @@ export function PartnersChecklistSection() {
           </Reveal>
 
           {/* 협력 파트너 */}
-          <Reveal delay={0.1} className="order-first h-full lg:order-none">
+          <Reveal delay={0.1} className="h-full">
             <div className="flex h-full flex-col rounded-card bg-white p-6 shadow-soft lg:p-8">
               <div className="mb-2 flex items-center justify-between">
                 <h3 className="text-lg font-bold text-text-charcoal">

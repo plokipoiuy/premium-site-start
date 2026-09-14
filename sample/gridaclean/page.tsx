@@ -23,6 +23,21 @@ export const metadata: Metadata = {
   title: siteConfigGridaclean.seoTitle,
   description: siteConfigGridaclean.seoDescription,
   robots: { index: false, follow: false },
+  // 카카오톡 등 메신저 미리보기용. 검색엔진 색인과는 무관하며 위 robots 설정이 우선한다.
+  openGraph: {
+    title: siteConfigGridaclean.seoTitle,
+    description: siteConfigGridaclean.seoDescription,
+    url: siteConfigGridaclean.canonicalUrl,
+    type: "website",
+    locale: "ko_KR",
+    images: [{ url: "/images/hero/hero-1.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfigGridaclean.seoTitle,
+    description: siteConfigGridaclean.seoDescription,
+    images: ["/images/hero/hero-1.png"],
+  },
 };
 
 export default function GridacleanSampleHome() {

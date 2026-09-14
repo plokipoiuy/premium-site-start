@@ -16,7 +16,7 @@ export function Footer() {
       <div className="container-content flex flex-col gap-8">
         <Logo />
 
-        <div className="rounded-card border border-divider bg-neul-bg p-6 lg:p-8">
+        <div className="rounded-card border border-divider bg-ivory p-6 lg:p-8">
           <div className="grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2">
             <div className="flex flex-col gap-4">
               <InfoRow label="상호명" value={siteConfig.businessName} />

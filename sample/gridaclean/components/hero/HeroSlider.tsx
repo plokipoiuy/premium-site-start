@@ -100,7 +100,8 @@ export function HeroSlider() {
             </AnimatePresence>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button onClick={open} size="lg">
+              {/* 모바일/태블릿에서는 하단 고정바(MobileBar)가 견적 CTA를 대신하므로 중복을 피해 숨긴다 */}
+              <Button onClick={open} size="lg" className="hidden lg:inline-flex">
                 청소 견적 문의하기
               </Button>
               <Button href="#portfolio" variant="ghost" size="lg">

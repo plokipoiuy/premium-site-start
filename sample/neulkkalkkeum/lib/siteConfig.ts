@@ -11,11 +11,11 @@ export const siteConfigNeulkkalkkeum = {
   businessName: "늘깔끔",
   businessNameEnglish: "NEULKKALKKEUM",
 
-  // 실제 로고(Notion 첨부 logo_늘깔끔.jpg) 바이너리는 현재 세션의 Notion 연동 도구로
-  // 다운로드할 수 없어(텍스트 첨부만 다운로드 가능, 파일 속성도 서명 URL을 반환하지 않음)
-  // 이 경로는 비워둡니다. public/images/logo/neulkkalkkeum-logo.jpg 에 실제 로고 파일을
-  // 넣으면 Header/Footer가 자동으로 그 이미지를 사용합니다.
-  logo: "/images/logo/neulkkalkkeum-logo.jpg",
+  // 실제 로고(Notion 첨부 logo_늘깔끔.jpg) 이미지 파일이 헤더/푸터에서 깨져 표시되어
+  // 이미지 로고 사용을 중단했습니다. 현재는 components/ui/Logo.tsx의 inline SVG
+  // (원본 로고 우측 하단 "집+반짝이" 심볼을 단순화)로 대체합니다. 이 필드는 더 이상
+  // 참조되지 않습니다.
+  logo: "",
 
   // 연락처 — SAMPLE 전용 값. 실제 늘깔끔 연락처(010-9974-5052 등)는 사용하지 않습니다.
   phoneRaw: "0212345678",
@@ -35,9 +35,9 @@ export const siteConfigNeulkkalkkeum = {
   serviceAreas: ["세종"],
   services: ["입주청소", "이사청소", "거주청소", "부분·집중청소"],
 
-  // 색상: 늘깔끔 로고가 그린하우스보다 짙은 초록 계열이라는 설명을 반영해
-  // Primary를 더 어둡게, CTA 핑크는 Green House와 같은 계열을 유지합니다.
-  primaryColor: "#1E4231", // 메인 — 로고보다 짙은 딥그린
+  // 색상: 브랜드 포인트 초록만 늘깔끔 고유값을 쓰고, 전체 밝기/배경/CTA는
+  // Green House 최종본 기준을 그대로 따릅니다.
+  primaryColor: "#296330", // 메인 — 늘깔끔 브랜드 포인트 초록
   secondaryColor: "#7FA88F", // 보조 — Primary보다 밝은 초록
   accentColor: "#EF6F8D", // 강조/CTA — Green House와 동일 계열 핑크
 

@@ -54,7 +54,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
             type="button"
             aria-label="닫기"
             onClick={onClose}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-text-muted transition-colors hover:bg-neul-bg hover:text-text-charcoal focus-visible:outline-neul-green"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-text-muted transition-colors hover:bg-ivory hover:text-text-charcoal focus-visible:outline-neul-green"
           >
             <X size={20} />
           </button>
