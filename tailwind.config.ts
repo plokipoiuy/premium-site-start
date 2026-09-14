@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 import { siteConfig } from "./archive/greenhouse/lib/siteConfig";
 import { siteConfigGridaclean } from "./sample/gridaclean/lib/siteConfig";
+import { siteConfigNeulkkalkkeum } from "./sample/neulkkalkkeum/lib/siteConfig";
 
 // 강조색을 흰색과 섞어 배지/태그용 연한 톤을 자동으로 만든다.
 function lighten(hex: string, amount: number): string {
@@ -34,6 +35,13 @@ const config: Config = {
         "grida-accent-light": lighten(siteConfigGridaclean.accentColor, 0.85),
         "grida-bg": "#F5FAFC",
         "grida-card": "#FFFFFF",
+        // 늘깔끔 Sample #003 전용 브랜드 컬러 — Green House/GridaClean 토큰과 별도로 관리
+        "neul-green": siteConfigNeulkkalkkeum.primaryColor,
+        "neul-sage": siteConfigNeulkkalkkeum.secondaryColor,
+        "neul-pink": siteConfigNeulkkalkkeum.accentColor,
+        "neul-pink-light": lighten(siteConfigNeulkkalkkeum.accentColor, 0.85),
+        "neul-bg": "#FAF6EC",
+        "neul-card": "#FFFFFF",
         ivory: "#F5FAFC",
         "text-charcoal": "#202824",
         "text-body": "#59625E",
