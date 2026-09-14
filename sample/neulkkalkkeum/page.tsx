@@ -24,19 +24,18 @@ export const metadata: Metadata = {
   description: siteConfigNeulkkalkkeum.seoDescription,
   robots: { index: false, follow: false },
   // 카카오톡 등 메신저 미리보기용. 검색엔진 색인과는 무관하며 위 robots 설정이 우선한다.
+  // 이미지는 같은 라우트의 opengraph-image.tsx(늘깔끔 전용, 코드로 생성)가 자동으로 채운다.
   openGraph: {
-    title: siteConfigNeulkkalkkeum.seoTitle,
-    description: siteConfigNeulkkalkkeum.seoDescription,
+    title: siteConfigNeulkkalkkeum.ogTitle,
+    description: siteConfigNeulkkalkkeum.ogDescription,
     url: siteConfigNeulkkalkkeum.canonicalUrl,
     type: "website",
     locale: "ko_KR",
-    images: [{ url: "/images/hero/hero-1.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfigNeulkkalkkeum.seoTitle,
-    description: siteConfigNeulkkalkkeum.seoDescription,
-    images: ["/images/hero/hero-1.png"],
+    title: siteConfigNeulkkalkkeum.ogTitle,
+    description: siteConfigNeulkkalkkeum.ogDescription,
   },
 };
 

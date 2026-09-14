@@ -46,6 +46,9 @@ export const siteConfigGridaclean = {
   seoTitle: "그리다클린 GRIDA CLEAN | 세종 입주·상가·사무실·에어컨 청소 전문 (샘플)",
   seoDescription:
     "세종 지역 기반 청소 전문 브랜드 그리다클린. 입주청소, 상가청소, 사무실청소, 에어컨청소를 투명한 상담과 꼼꼼한 검수로 진행합니다. (영업용 샘플 페이지)",
+  // 카카오톡 등 메신저 미리보기 전용 — <title>/설명보다 짧고 간결하게
+  ogTitle: "그리다클린 | 세종 청소업체",
+  ogDescription: "세종 지역 입주청소·상가청소·사무실청소·에어컨청소 전문 그리다클린 홈페이지 샘플입니다.",
   canonicalUrl: "https://bibilayer.vercel.app/sample/gridaclean",
 };
 

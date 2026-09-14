@@ -70,9 +70,7 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
-          <Button onClick={open} size="md" className="!px-4 !py-2 text-sm">
-            견적
-          </Button>
+          {/* 모바일/태블릿에서는 하단 고정바(MobileBar)가 견적 CTA를 전담하므로 헤더에서는 숨긴다 */}
           <button
             type="button"
             aria-label={isMobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
